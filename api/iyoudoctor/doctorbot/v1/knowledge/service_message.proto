@@ -1,0 +1,311 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.doctorbot.v1.knowledge;
+
+import "iyoudoctor/doctorbot/v1/knowledge/data.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "ServiceMessageProto";
+option java_package = "com.iyoudoctor.doctorbot.v1.knowledge";
+
+// {en} The request of name entity search
+// {cn} 实体名称搜索请求
+message NameEntitySearchRequest {
+    // {en} The (partial) name to search
+    // {cn} 搜索的名字或者Sug
+    string name = 1;
+    // {en} The search types
+    // {cn} 搜索实体的类型列表
+    repeated EntityType types = 2;
+    // {en} The search options
+    // {cn} 搜索选项
+    NameEntitySearchOptions options = 3;
+    // {en} The return result start from, 0 by default
+    // {cn} 搜索的结果的开始位置，默认值是0
+    int32 start = 14;
+    // {en} The return result size, 10 by default
+    // {cn} 返回的搜索结果数，默认值是10
+    int32 size = 15;
+}
+
+// {en} The options of name entity search
+// {cn} 实体名称搜索选项
+message NameEntitySearchOptions {
+    // {en} The symptom options
+    // {cn} 症状搜索选项
+    NameEntitySearchSymptomOptions symptom = 1;
+}
+
+// {en} The symptom options of name entity search
+// {cn} 实体名称搜索的症状搜索选项
+message NameEntitySearchSymptomOptions {
+    // {en} The types
+    // {cn} 症状类型列表
+    repeated SymptomType types = 1;
+}
+
+// {en} The response of name entity search
+// {cn} 实体名称搜索结果
+message NameEntitySearchResponse {
+    // {en} The search result items
+    // {cn} 搜索结果项目列表
+    repeated NameEntitySearchItem items = 1;
+    // {en} The search result start from
+    // {cn} 搜索结果起始
+    int32 start = 12;
+    // {en} The search result items size
+    // {cn} 搜索结果数
+    int32 size = 13;
+    // {en} the requested search result item size
+    // {cn} 请求的搜索结果数
+    int32 requestedSize = 14;
+    // {en} The total result size
+    // {cn} 结果总数
+    int32 totalSize = 15;
+}
+
+// {en} The name entity search result item
+// {cn} 实体名称搜索结果项
+message NameEntitySearchItem {
+    // {en} The unique name of this search item (for the specific entity scope)
+    // {cn} 实体的唯一名称
+    string name = 1;
+    // {en} The type of this search item
+    // {cn} 实体类型
+    EntityType type = 2;
+    // {en} The symptom
+    // {cn} 症状
+    Symptom symptom = 4;
+    // {en} The disease
+    // {cn} 疾病
+    Disease disease = 5;
+    // {en} The lab item
+    // {cn} 化验项目
+    LabItem labItem = 6;
+    // {en} The exam item
+    // {cn} 检查项目
+    ExamItem examItem = 7;
+    // {en} The drug
+    // {cn} 药品
+    Drug drug = 8;
+}
+
+// {en} The response of symptom position list
+// {cn} 症状部位列表结果
+message GetSymptomPositionListResponse {
+    // {en} The positions
+    // {cn} 部位列表
+    repeated string names = 1;
+}
+
+// {en} The request of symptom search
+// {cn} 症状搜索请求
+message SymptomSearchRequest {
+    // {en} The names (Use logic or for names)
+    // {cn} 搜索的名称（多个名称之间或关系）
+    repeated string names = 1;
+    // {en} The positions (Use logic or for positions)
+    // {cn} 搜索的部位（多个部位之间或关系）
+    repeated string positions = 2;
+    // {en} The types (Use logic or for types)
+    // {cn} 搜索的类型（多个类型之间或关系）
+    repeated SymptomType types = 3;
+    // {en} The returned result item start from, 0 by default
+    // {cn} 返回的结果起始，默认是0
+    int32 start = 14;
+    // {en} The returned result item size, 10 by default
+    // {cn} 返回的结果数，默认是10
+    int32 size = 15;
+}
+
+// {en} The response of symptom search
+// {cn} 症状搜索结果
+message SymptomSearchResponse {
+    // {en} The symptoms
+    // {cn} 症状列表
+    repeated Symptom symptoms = 1;
+    // {en} The search result start from
+    // {cn} 搜索结果起始
+    int32 start = 12;
+    // {en} The search result items size
+    // {cn} 搜索结果数
+    int32 size = 13;
+    // {en} the requested search result item size
+    // {cn} 请求的搜索结果数
+    int32 requestedSize = 14;
+    // {en} The total result size
+    // {cn} 结果总数
+    int32 totalSize = 15;
+}
+
+// {en} The response of disease category list
+// {cn} 疾病分类列表结果
+message GetDiseaseCategoryListResponse {
+    // {en} The categories
+    // {cn} 分类列表
+    repeated string names = 1;
+}
+
+// {en} The request of disease search
+// {cn} 疾病搜索
+message DiseaseSearchRequest {
+    // {en} The names (Use logic or for names)
+    // {cn} 搜索的名称（多个名称之间或关系）
+    repeated string names = 3;
+    // {en} The categories (Use logic or for categories)
+    // {cn} 搜索的分类（多个分类之间或关系）
+    repeated string categories = 2;
+    // {en} The returned result item start from, 0 by default
+    // {cn} 返回的结果起始，默认是0
+    int32 start = 14;
+    // {en} The returned result item size, 10 by default
+    // {cn} 返回的结果数，默认是10
+    int32 size = 15;
+}
+
+// {en} The response of disease search
+// {cn} 疾病搜索结果
+message DiseaseSearchResponse {
+    // {en} The diseases
+    // {cn} 疾病列表
+    repeated Disease diseases = 1;
+    // {en} The search result start from
+    // {cn} 搜索结果起始
+    int32 start = 12;
+    // {en} The search result items size
+    // {cn} 搜索结果数
+    int32 size = 13;
+    // {en} the requested search result item size
+    // {cn} 请求的搜索结果数
+    int32 requestedSize = 14;
+    // {en} The total result size
+    // {cn} 结果总数
+    int32 totalSize = 15;
+}
+
+// {en} The response of lab item category list
+// {cn} 化验项目分类列表结果
+message GetLabItemCategoryListResponse {
+    // {en} The categories
+    // {cn} 分类列表
+    repeated string names = 1;
+}
+
+// {en} The request of lab item search
+// {cn} 化验项目搜索
+message LabItemSearchRequest {
+    // {en} The names (Use logic or for names)
+    // {cn} 搜索的名称（多个名称之间或关系）
+    repeated string names = 1;
+    // {en} The categories (Use logic or for categories)
+    // {cn} 搜索的分类（多个分类之间或关系）
+    repeated string categories = 2;
+    // {en} The returned result item start from, 0 by default
+    // {cn} 返回的结果起始，默认是0
+    int32 start = 14;
+    // {en} The returned result item size, 10 by default
+    // {cn} 返回的结果数，默认是10
+    int32 size = 15;
+}
+
+// {en} The response of lab item search
+// {cn} 化验项目搜索结果
+message LabItemSearchResponse {
+    // {en} The lab items
+    // {cn} 化验项目列表
+    repeated LabItem labItems = 1;
+    // {en} The search result start from
+    // {cn} 搜索结果起始
+    int32 start = 12;
+    // {en} The search result items size
+    // {cn} 搜索结果数
+    int32 size = 13;
+    // {en} the requested search result item size
+    // {cn} 请求的搜索结果数
+    int32 requestedSize = 14;
+    // {en} The total result size
+    // {cn} 结果总数
+    int32 totalSize = 15;
+}
+
+// {en} The response of exam item category list
+// {cn} 检查项目分类列表结果
+message GetExamItemCategoryListResponse {
+    // {en} The categories
+    // {cn} 分类列表
+    repeated string names = 1;
+}
+
+// {en} The request of exam item search
+// {cn} 检查项目搜索
+message ExamItemSearchRequest {
+    // {en} The names (Use logic or for names)
+    // {cn} 搜索的名称（多个名称之间或关系）
+    repeated string names = 1;
+    // {en} The categories (Use logic or for categories)
+    // {cn} 搜索的分类（多个分类之间或关系）
+    repeated string categories = 2;
+    // {en} The returned result item start from, 0 by default
+    // {cn} 返回的结果起始，默认是0
+    int32 start = 14;
+    // {en} The returned result item size, 10 by default
+    // {cn} 返回的结果数，默认是10
+    int32 size = 15;
+}
+
+// {en} The response of exam item search
+// {cn} 检查项目搜索结果
+message ExamItemSearchResponse {
+    // {en} The exam item entity
+    // {cn} 检查项目列表
+    repeated ExamItem examItems = 1;
+    // {en} The search result start from
+    // {cn} 搜索结果起始
+    int32 start = 12;
+    // {en} The search result items size
+    // {cn} 搜索结果数
+    int32 size = 13;
+    // {en} the requested search result item size
+    // {cn} 请求的搜索结果数
+    int32 requestedSize = 14;
+    // {en} The total result size
+    // {cn} 结果总数
+    int32 totalSize = 15;
+}
+
+// {en} The request of drug search
+// {cn} 药品搜索
+message DrugSearchRequest {
+    // {en} The names (Use logic or for names)
+    // {cn} 搜索的名称（多个名称之间或关系）
+    repeated string names = 1;
+    // {en} The returned result item start from, 0 by default
+    // {cn} 返回的结果起始，默认是0
+    int32 start = 14;
+    // {en} The returned result item size, 10 by default
+    // {cn} 返回的结果数，默认是10
+    int32 size = 15;
+}
+
+// {en} The response of drug search
+// {cn} 药品搜索结果
+message DrugSearchResponse {
+    // {en} The drugs
+    // {cn} 药品列表
+    repeated Drug drugs = 1;
+    // {en} The search result start from
+    // {cn} 搜索结果起始
+    int32 start = 12;
+    // {en} The search result items size
+    // {cn} 搜索结果数
+    int32 size = 13;
+    // {en} the requested search result item size
+    // {cn} 请求的搜索结果数
+    int32 requestedSize = 14;
+    // {en} The total result size
+    // {cn} 结果总数
+    int32 totalSize = 15;
+}

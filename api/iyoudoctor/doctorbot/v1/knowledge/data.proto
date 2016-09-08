@@ -1,0 +1,211 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.doctorbot.v1.knowledge;
+
+option java_multiple_files = true;
+option java_outer_classname = "DataProto";
+option java_package = "com.iyoudoctor.doctorbot.v1.knowledge";
+
+// {en} The type of knowledge entity
+// {cn} 知识实体类型
+enum EntityType {
+    // {en} Symptom
+    // {cn} 症状
+    EntityTypeSymptom = 0;
+    // {en} Disease
+    // {cn} 疾病
+    EntityTypeDisease = 1;
+    // {en} Lab item
+    // {cn} 化验项目
+    EntityTypeLabItem = 2;
+    // {en} Exam item
+    // {cn} 检查项目
+    EntityTypeExamItem = 3;
+    // {en} Drug
+    // {cn} 药品
+    EntityTypeDrug = 4;
+}
+
+// {en} The type of symptom
+// {cn} 症状的类型
+enum SymptomType {
+    // {en} The symptom
+    // {cn} 症状
+    SymptomTypeSymptom = 0;
+    // {en} The vital sign
+    // {cn} 生命体征
+    SymptomTypeVitalSign = 1;
+}
+
+// {en} The symptom definition
+// {cn} 症状定义
+message Symptom {
+  // {en} The unique name
+  // {cn} 唯一名称
+  string name = 1;
+  // {en} The user friendly name, for those who don't have too much medical domain knowledge, may be empty
+  // {cn} 用户友好的名字，提供给缺少医疗领域知识的普通人理解
+  string friendlyName = 2;
+  // {en} The position name of this symptom
+  // {cn} 部位
+  string position = 3;
+  // {en} The type of symptom
+  // {cn} 类型
+  SymptomType type = 4;
+}
+
+// {en} The disease definition
+// {cn} 疾病数据定义
+message Disease {
+    // {en} The unique icd10 code
+    // {cn} 疾病的ICD10编码
+    string icd10 = 1;
+    // {en} The unique name
+    // {cn} 唯一名称
+    string name = 2;
+    // {en} The user friendly name, for those who don't have too much medical domain knowledge, may be empty
+    // {cn} 用户友好的名字，提供给缺少医疗领域知识的普通人理解
+    string friendlyName = 3;
+    // {en} The category
+    // {cn} 分类
+    string category = 4;
+}
+
+// {en} The lab item definition
+// {cn} 化验项目定义
+message LabItem {
+    // {en} The name
+    // {cn} 名称
+    string name = 1;
+    // {en} The specimen
+    // {cn} 样本
+    string specimen = 2;
+    // {en} The category
+    // {cn} 分类
+    string category = 3;
+    // {en} The value type
+    // {cn} 值类型
+    LabItemValueType valueType = 4;
+    // {en} The unit if value type is numeric, may be null
+    // {cn} 当值类型是数值类型时，这个字段表示数值的单位，可能为空
+    LabItemUnits units = 5;
+    // {en} The choices if value type is qualitative and has a limited values, may be null
+    // {cn} 当值类型是定性值时，这个字段表示定性值的候选集合，可能为空
+    repeated string choices = 6;
+    // {en} The numeric value normal range
+    // {cn} 数值结果的正常范围
+    LabItemNumericValueNormalRange numericNormalRange = 7;
+    // {en} The qualitative value normal range
+    // {cn} 定性结果的正常范围
+    LabItemQualitativeValueNormalRange qualitativeNormalRange = 8;
+}
+
+// {en} The definition of lab item value type
+// {cn} 化验值类型定义
+enum LabItemValueType {
+    // {en} The value should be a numeric value
+    // {cn} 数值类型
+    Numeric = 0;
+    // {en} The value should be a qualitative value
+    // {cn} 定性类型
+    Qualitative = 1;
+}
+
+// {en} The definition of lab item unit
+// {cn} 化验单位定义
+message LabItemUnits {
+    // {en} All known units
+    // {cn} 单位列表
+    repeated LabItemUnit units = 1;
+    // {en} The default unit
+    // {cn} 默认的单位
+    string defaultUnit = 2;
+}
+
+// {en} The definition of single lab item unit
+// {cn} 单一化验单位定义
+message LabItemUnit {
+    // {en} The unit name
+    // {cn} 名称
+    string name = 1;
+}
+
+// {en} The definition of the normal range of numeric value
+// {cn} 化验项目数值类型值的正常值范围
+message LabItemNumericValueNormalRange {
+    // {en} The unit of values
+    // {cn} 值的单位
+    string unit = 1;
+    // {en} The lower value (include), this value will empty or has a single value
+    // {cn} 正常值范围下界（包含），该值可能为空或者包含一个数字
+    repeated float lower = 2;
+    // {en} The higher value (include), this value will empty or has a single value
+    // {cn} 正常值范围上界（包含），该值可能为空或者包含一个数字
+    repeated float higher = 3;
+}
+
+// {en} The definition of the normal range of qualitative value
+// {cn} 化验项目定性类型的正常值范围
+message LabItemQualitativeValueNormalRange {
+    // {en} The normal values
+    // {cn} 正常值集合
+    repeated string normalValues = 1;
+}
+
+// {en} The exam definition
+// {cn} 检查定义
+message ExamItem {
+    // {en} The name
+    // {cn} 名称
+    string name = 1;
+    // {en} The category
+    // {cn} 分类
+    string category = 2;
+    // {en} The observations
+    // {cn} 观察结论
+    repeated ExamItemObservation observations = 5;
+}
+
+// {en} The exam item observation
+// {cn} 检查观察结论
+message ExamItemObservation {
+    // {en} The name
+    // {cn} 名称
+    string name = 1;
+    // {en}  The state list
+    // {cn} 状态列表
+    repeated string states = 2;
+}
+
+// {en} The drug definition
+// {cn} 药品定义
+message Drug {
+    // {en} The unique name (the common name)
+    // {cn} 药品的唯一通用名
+    string name = 1;
+    // {en} The instructions
+    // {cn} 药品说明书
+    repeated DrugInstruction instructions = 2;
+}
+
+// {en} The drug instruction definition
+// {cn} 药品说明书定义
+message DrugInstruction {
+    // {en} Chapters
+    // {cn} 说明书章节
+    repeated DrugInstructionChapter chapters = 1;
+}
+
+// {en} The drug instruction chapter definition
+// {cn} 药品说明书章节定义
+message DrugInstructionChapter {
+    // {en} The title
+    // {cn} 章节标题
+    string title = 1;
+    // {en} The text
+    // {cn} 章节内容
+    string text = 2;
+}
