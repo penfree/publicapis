@@ -1,0 +1,107 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.doctorbot.v1.analyze;
+
+import "google/protobuf/timestamp.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "DataProto";
+option java_package = "com.iyoudoctor.doctorbot.v1.analyze";
+
+// {en} Gender
+// {cn} 性别
+enum Gender {
+    // {en} Male
+    // {cn} 男
+    GenderMale = 0;
+    // {en} Female
+    // {cn} 女
+    GenderFemale = 1;
+    // {en} Unknown
+    // {cn} 未知
+    GenderUnknown = 2;
+}
+
+// {en} The user basic info
+// {cn} 用户基本信息
+message UserBasicInfo {
+    // {en} The gender
+    // {cn} 性别
+    Gender gender = 1;
+    // {en} The age
+    // {cn} 年龄
+    int32 age = 2;
+    // {en} Birthday, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
+    // {cn} 出生日期，采用 RFC 3339 格式进行字符串序列化（举例：1972-01-01T10:00:20.021Z）
+    google.protobuf.Timestamp birthday = 3;
+}
+
+// {en} The user symptom
+// {cn} 用户症状
+message UserSymptom {
+    // {en} The name
+    // {cn} 名称
+    string name = 1;
+    // {en} The state
+    // {cn} 状态
+    SymptomState state = 2;
+}
+
+// {en} The state of symptom
+// {cn} 症状状态
+enum SymptomState {
+    // {en} Positive
+    // {cn} 存在该症状
+    SymptomStatePositive = 0;
+    // {en} Negative
+    // {cn} 不存在该症状
+    SymptomStateNegative = 1;
+    // {en} Unknown
+    // {cn} 不确定
+    SymptomStateUnknown = 2;
+}
+
+// {en} The user lab item
+// {cn} 用户化验项目
+message UserLabItem {
+    // {en} The name
+    // {cn} 名称
+    string name = 1;
+    // {en} The specimen
+    // {cn} 样本
+    string specimen = 2;
+    // {en} The numeric value
+    // {cn} 数值结果（当化验项目的值类型是数值型时）
+    float numericValue = 3;
+    // {en} The qualitative value
+    // {cn} 定性结果（当化验项目的值类型是定性类型时）
+    string qualitativeValue = 4;
+    // {en} The unit name. A necessary field when this is a numeric value
+    // {cn} 化验结果单位，当化验项目是数值型时，这个字段是必要的
+    string unit = 5;
+}
+
+// {en} The user exam item
+// {cn} 用户检查项目
+message UserExamItem {
+    // {en} The name
+    // {cn} 名称
+    string name = 1;
+    // {en} The observations
+    // {cn} 检查观察结论
+    repeated UserExamItemObservation observations = 2;
+}
+
+// {en} The exam item observations
+// {cn} 检查项目观察结论
+message UserExamItemObservation {
+    // {en} The name
+    // {cn} 名称
+    string name = 1;
+    // {en} The state
+    // {cn} 状态
+    string state = 2;
+}

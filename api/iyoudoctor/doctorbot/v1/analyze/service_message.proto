@@ -1,0 +1,338 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.doctorbot.v1.analyze;
+
+import "iyoudoctor/doctorbot/v1/analyze/data.proto";
+import "iyoudoctor/doctorbot/v1/knowledge/data.proto";
+
+option java_multiple_files = true;
+option java_outer_classname = "ServiceMessageProto";
+option java_package = "com.iyoudoctor.doctorbot.v1.knowledge.analyze";
+
+// {en} The user analyze target
+// {cn} 用户分析目标
+enum UserAnalyzeTarget {
+    // {en} More symptoms, always be used when asking user to provide more information
+    // {cn} 更多症状， 经常被用在追问用户更多信息
+    UserAnalyzeTargetMoreSymptoms = 0;
+    // {en} Suggested departments
+    // {cn} 建议就诊的科室
+    UserAnalyzeTargetSuggestedDepartments = 1;
+    // {en} Predicted diseases
+    // {cn} 预测可能的疾病
+    UserAnalyzeTargetPredictedDiseases = 2;
+    // {en} Required lab items for further diagnosis
+    // {cn} 进一步诊断需要的化验项目
+    UserAnalyzeTargetRequiredLabItems = 3;
+    // {en} Required exam items for further diagnosis
+    // {cn} 进一步诊断需要的检查项目
+    UserAnalyzeTargetRequiredExamItems = 4;
+    // {en} Recommend drugs
+    // {cn} 推荐用药
+    UserAnalyzeTargetRecommendedDrugs = 5;
+}
+
+// {en} The options of more symptoms
+// {cn} 更多症状选项
+message MoreSymptomsOptions {
+    // {en} The return result size, 1 by default
+    // {cn} 返回的结果数，默认值是1
+    int32 size = 1;
+}
+
+// {en} The options of suggested departments
+// {cn} 建议科室选项
+message SuggestedDepartmentsOptions {
+    // {en} The return result size, 5 by default
+    // {cn} 返回的结果数，默认值是5
+    int32 size = 1;
+}
+
+// {en} The options of predicted disease
+// {cn} 预测的疾病选项
+message PredictedDiseasesOptions {
+    // {en} The return result size, 10 by default
+    // {cn} 返回的结果数，默认值是10
+    int32 size = 1;
+}
+
+// {en} The options of required lab item
+// {cn} 需要的化验项目选项
+message RequiredLabItemsOptions {
+    // {en} The return result size, 10 by default
+    // {cn} 返回的结果数，默认值是10
+    int32 size = 1;
+}
+
+// {en} The options of required exam items
+// {cn} 需要的检查项目选项
+message RequiredExamItemsOptions {
+    // {en} The return result size, 10 by default
+    // {cn} 返回的结果数，默认值是10
+    int32 size = 1;
+}
+
+// {en} The options of recommended drugs
+// {cn} 推荐的药品选项
+message RecommendedDrugsOptions {
+    // {en} The return result size, 10 by default
+    // {cn} 返回的结果数，默认值是10
+    int32 size = 1;
+}
+
+// {en} The request of user analyze
+// {cn} 用户分析请求
+message UserAnalyzeRequest {
+    // {en} The analyze target
+    // {cn} 分析的目标
+    repeated UserAnalyzeTarget targets = 1;
+    // {en} The options
+    // {cn} 选项
+    UserAnalyzeOptions options = 2;
+    // {en} The user basic info
+    // {cn} 用户基本信息
+    UserBasicInfo basicInfo = 3;
+    // {en} The user symptoms
+    // {cn} 用户症状列表
+    repeated UserSymptom symptoms = 4;
+    // {en} The user lab items
+    // {cn} 用户化验项目列表
+    repeated UserLabItem labItems = 5;
+    // {en} The user exam items
+    // {cn} 用户检查项目列表
+    repeated UserExamItem examItems = 6;
+}
+
+// {en} The options of user analyze
+// {cn} 用户分析选项
+message UserAnalyzeOptions {
+    // {en} The more symptoms options
+    // {cn} 更多症状选项
+    MoreSymptomsOptions moreSymptoms = 1;
+    // {en} The suggested department options
+    // {cn} 建议科室选项
+    SuggestedDepartmentsOptions suggestedDepartments = 2;
+    // {en} The predicted diseases options
+    // {cn} 预测疾病选项
+    PredictedDiseasesOptions predictedDiseases = 3;
+    // {en} The required lab items options
+    // {cn} 需要的化验项目选项
+    RequiredLabItemsOptions requiredLabItems = 4;
+    // {en} The required exam items options
+    // {cn} 需要的检查项目选项
+    RequiredExamItemsOptions requiredExamItems = 5;
+    // {en} The recommended drugs options
+    // {cn} 推荐用药选项
+    RecommendedDrugsOptions recommendedDrugs = 10;
+}
+
+// {en} The analyze response of more symptoms
+// {cn} 更多症状分析结果
+message MoreSymptomsAnalyzeResponse {
+    // {en} The symptoms
+    // {cn} 症状列表
+    repeated MoreSymptomAnalyzeItem symptoms = 1;
+}
+
+// {en} The analyze response item of more symptoms
+// {cn} 更多症状分析结果项目
+message MoreSymptomAnalyzeItem {
+    // {en} The symptom
+    // {cn} 症状
+    iyoudoctor.doctorbot.v1.knowledge.Symptom symptom = 1;
+    // {en} The weight, fall in range [0.0, 1.0]
+    // {cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+}
+
+// {en} The analyze response of suggestedDepartments
+// {cn} 建议科室分析结果
+message SuggestedDepartmentsAnalyzeResponse {
+    // {en} The departments
+    // {cn} 科室列表
+    repeated SuggestedDepartmentsAnalyzeItem departments = 1;
+}
+
+// {en} The analyze response item of suggestedDepartments
+// {cn} 建议科室分析结果项目
+message SuggestedDepartmentsAnalyzeItem {
+    // {en} The name
+    // {cn} 名称
+    string name = 1;
+    // {en} The weight, fall in range [0.0, 1.0]
+    // {cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+}
+
+// {en} The analyze response of predicted diseases
+// {cn} 疾病分析结果
+message PredictedDiseasesAnalyzeResponse {
+    // {en} The diseases
+    // {cn} 疾病列表
+    repeated PredictedDiseasesAnalyzeItem diseases = 1;
+}
+
+// {en} The analyze response item of predicted diseases
+// {cn} 疾病分析结果项目
+message PredictedDiseasesAnalyzeItem {
+    // {en} The disease
+    // {cn} 疾病
+    iyoudoctor.doctorbot.v1.knowledge.Disease disease = 1;
+    // {en} The weight, fall in range [0.0, 1.0]
+    // {cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+    // {en} The evidence
+    // {cn} 分析证据
+    PredictedDiseasesAnalyzeEvidence evidence = 3;
+    // {en} The treatment
+    // {cn} 治疗方案
+    PredictedDiseasesAnalyzeRecommendTreatment Treatment = 4;
+}
+
+// {en} The analyze evidence of predicted disease
+// {cn} 预测疾病的分析依据
+message PredictedDiseasesAnalyzeEvidence {
+    // {en} The symptom evidence
+    // {cn} 症状依据列表
+    repeated PredictedDiseasesAnalyzeSymptomEvidence symptoms = 1;
+    // {en} The lab item evidence
+    // {cn} 化验项目依据列表
+    repeated PredictedDiseasesAnalyzeLabItemEvidence labItems = 2;
+    // {en} The exam item evidence
+    // {cn} 检查项目依据列表
+    repeated PredictedDiseasesAnalyzeExamItemEvidence examItems = 3;
+}
+
+// {en} The analyze symptom of predicted disease
+// {cn} 预测疾病的症状分析依据
+message PredictedDiseasesAnalyzeSymptomEvidence {
+    // {en} The symptom
+    // {cn} 症状
+    iyoudoctor.doctorbot.v1.knowledge.Symptom symptom = 1;
+    // {en} The state
+    // {cn} 状态
+    SymptomState state = 2;
+}
+
+// {en} The analyze lab item of predicted disease
+// {cn} 预测疾病的化验项目分析依据
+message PredictedDiseasesAnalyzeLabItemEvidence {
+    // {en} The lab item
+    // {cn} 化验项目
+    iyoudoctor.doctorbot.v1.knowledge.LabItem labItem = 1;
+    // {en} The reason
+    // {cn} 原因
+    string reason = 2;
+}
+
+// {en} The analyze exam item of predicted disease
+// {cn} 预测疾病的检查项目分析依据
+message PredictedDiseasesAnalyzeExamItemEvidence {
+    // {en} The exam item
+    // {cn} 检查项目
+    iyoudoctor.doctorbot.v1.knowledge.ExamItem examItem = 1;
+    // {en} The user exam item observation
+    // {cn} 用户检查观察结果
+    UserExamItemObservation observation = 2;
+}
+
+// {en} The recommended treatment of predicted disease
+// {cn} 预测的诊断的推荐治疗方案
+message PredictedDiseasesAnalyzeRecommendTreatment {
+    // {en} The recommended drugs for the predicted disease
+    // {cn} 针对预测出的疾病的推荐用药
+    repeated PredictedDiseasesAnalyzeRecommendDrug drugs = 1;
+}
+
+// {en} The recommended drug of predicted disease
+// {cn} 预测的疾病的推荐用药
+message PredictedDiseasesAnalyzeRecommendDrug {
+    // {en} The drug
+    // {cn} 药品
+    iyoudoctor.doctorbot.v1.knowledge.Drug drug = 1;
+    // {en} The weight, fall in range [0.0, 1.0]
+    // {cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+}
+
+// {en} The response of required lab item
+// {cn} 需要的化验项目结果
+message RequiredLabItemsAnalyzeResponse {
+    // {en} The lab items
+    // {cn} 化验项目列表
+    repeated RequiredLabItemsAnalyzeItem labItems = 1;
+}
+// {en} The response item of required lab item
+// {cn} 需要的化验项目结果项目
+message RequiredLabItemsAnalyzeItem {
+    // {en} The lab item
+    // {cn} 化验项目
+    iyoudoctor.doctorbot.v1.knowledge.LabItem labItem = 1;
+    // {en} The weight, fall in range [0.0, 1.0]
+    // {cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+}
+
+// {en} The response of required exam item
+// {cn} 需要的检查项目结果
+message RequiredExamItemsAnalyzeResponse {
+    // {en} The exam items
+    // {cn} 检查项目列表
+    repeated RequiredExamItemsAnalyzeItem examItems = 1;
+}
+
+// {en} The response of required exam item
+// {cn} 需要的检查项目结果项目
+message RequiredExamItemsAnalyzeItem {
+    // {en} The exam item
+    // {cn} 检查项目
+    iyoudoctor.doctorbot.v1.knowledge.ExamItem examItem = 1;
+    // {en} The weight, fall in range [0.0, 1.0]
+    // {cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+}
+
+// {en} The response of recommended drugs
+// {cn} 推荐用药的结果
+message RecommendedDrugsAnalyzeResponse {
+    // {en} The drugs
+    // {cn} 药品列表
+    repeated RecommendedDrugsAnalyzeItem drugs = 1;
+}
+
+// {en} The response item of recommended drugs
+// {cn} 推荐用药的结果项目
+message RecommendedDrugsAnalyzeItem {
+    // {en} The drug
+    // {cn} 药品
+    iyoudoctor.doctorbot.v1.knowledge.Drug drug = 1;
+    // {en} The weight, fall in range [0.0, 1.0]
+    // {cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+}
+
+// {en} The response of user analyze
+// {cn} 用户分析结果
+message UserAnalyzeResponse {
+    // {en} The more symptoms analyze response
+    // {cn} 更多症状分析结果
+    MoreSymptomsAnalyzeResponse moreSymptoms = 1;
+    // {en} The suggested department analyze response
+    // {cn} 建议科室分析结果
+    SuggestedDepartmentsAnalyzeResponse suggestedDepartments = 2;
+    // {en} The predicted diseases analyze response
+    // {cn} 疾病预测分析结果
+    PredictedDiseasesAnalyzeResponse predictedDiseases = 3;
+    // {en} The required lab items analyze response
+    // {cn} 需要的化验项目分析结果
+    RequiredLabItemsAnalyzeResponse requiredLabItems = 4;
+    // {en} The required exam items analyze response
+    // {cn} 需要的检查项目分析结果
+    RequiredExamItemsAnalyzeResponse requiredExamItems = 5;
+    // {en} The recommended drugs analyze response
+    // {cn} 推荐用药分析结果
+    RecommendedDrugsAnalyzeResponse recommendedDrugs = 10;
+}
