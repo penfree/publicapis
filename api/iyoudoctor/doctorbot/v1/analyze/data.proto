@@ -14,15 +14,15 @@ option java_package = "com.iyoudoctor.doctorbot.v1.analyze";
 // {LANG:en} Gender
 // {LANG:cn} 性别
 enum Gender {
-    // {LANG:en} Male
-    // {LANG:cn} 男
-    GenderMale = 0;
-    // {LANG:en} Female
-    // {LANG:cn} 女
-    GenderFemale = 1;
     // {LANG:en} Unknown
     // {LANG:cn} 未知
-    GenderUnknown = 2;
+    GenderUnknown = 0;
+    // {LANG:en} Male
+    // {LANG:cn} 男
+    GenderMale = 1;
+    // {LANG:en} Female
+    // {LANG:cn} 女
+    GenderFemale = 2;
 }
 
 // {LANG:en} The user basic info
@@ -53,15 +53,15 @@ message UserSymptom {
 // {LANG:en} The state of symptom
 // {LANG:cn} 症状状态
 enum SymptomState {
-    // {LANG:en} Positive
-    // {LANG:cn} 存在该症状
-    SymptomStatePositive = 0;
-    // {LANG:en} Negative
-    // {LANG:cn} 不存在该症状
-    SymptomStateNegative = 1;
     // {LANG:en} Unknown
     // {LANG:cn} 不确定
-    SymptomStateUnknown = 2;
+    SymptomStateUnknown = 0;
+    // {LANG:en} Positive
+    // {LANG:cn} 存在该症状
+    SymptomStatePositive = 1;
+    // {LANG:en} Negative
+    // {LANG:cn} 不存在该症状
+    SymptomStateNegative = 2;
 }
 
 // {LANG:en} The user lab item

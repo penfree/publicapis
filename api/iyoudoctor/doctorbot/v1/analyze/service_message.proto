@@ -189,7 +189,7 @@ message PredictedDiseasesAnalyzeItem {
     PredictedDiseasesAnalyzeEvidence evidence = 3;
     // {LANG:en} The treatment
     // {LANG:cn} 治疗方案
-    PredictedDiseasesAnalyzeRecommendTreatment Treatment = 4;
+    PredictedDiseasesAnalyzeRecommendTreatment treatment = 4;
 }
 
 // {LANG:en} The analyze evidence of predicted disease
