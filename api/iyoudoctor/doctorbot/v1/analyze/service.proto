@@ -14,11 +14,11 @@ option java_multiple_files = true;
 option java_outer_classname = "ServicesProto";
 option java_package = "com.iyoudoctor.doctorbot.v1.analyze";
 
-// {en} The analyze service
-// {cn} 分析服务
+// {LANG:en} The analyze service
+// {LANG:cn} 分析服务
 service AnalyzeService {
-    // {en} Do user analyze
-    // {cn} 分析用户状况
+    // {LANG:en} Do user analyze
+    // {LANG:cn} 分析用户状况
     rpc UserAnalyze(UserAnalyzeRequest) returns (UserAnalyzeResponse) {
         option (google.api.http) = {
             post: "/doctorbot/v1/analyze/useranalyze"

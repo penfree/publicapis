@@ -15,83 +15,83 @@ option java_multiple_files = true;
 option java_outer_classname = "ServicesProto";
 option java_package = "com.iyoudoctor.doctorbot.v1.knowledge";
 
-// {en} The knowledge service
-// {cn} 知识服务
+// {LANG:en} The knowledge service
+// {LANG:cn} 知识服务
 service KnowledgeService {
-    // {en} Do entity search by name
-    // {cn} 根据名字搜索知识实体，比如：疾病、症状、药品等等
+    // {LANG:en} Do entity search by name
+    // {LANG:cn} 根据名字搜索知识实体，比如：疾病、症状、药品等等
     rpc NameEntitySearch(NameEntitySearchRequest) returns (NameEntitySearchResponse) {
         option (google.api.http) = {
             post: "/doctorbot/v1/knowledge/namesearch"
             body: "*"
         };
     }
-    // {en} Get all symptom positions
-    // {cn} 获得所有症状部位列表
+    // {LANG:en} Get all symptom positions
+    // {LANG:cn} 获得所有症状部位列表
     rpc GetSymptomPositionList(google.protobuf.Empty) returns (GetSymptomPositionListResponse) {
         option (google.api.http) = {
             get: "/doctorbot/v1/knowledge/symptom/position"
             body: "*"
         };
     }
-    // {en} Do symptom search
-    // {cn} 症状搜索
+    // {LANG:en} Do symptom search
+    // {LANG:cn} 症状搜索
     rpc SymptomSearch(SymptomSearchRequest) returns (SymptomSearchResponse) {
         option (google.api.http) = {
             post: "/doctorbot/v1/knowledge/symptom/search"
             body: "*"
         };
     }
-    // {en} Get all disease categories
-    // {cn} 获得所有疾病分类列表
+    // {LANG:en} Get all disease categories
+    // {LANG:cn} 获得所有疾病分类列表
     rpc GetDiseaseCategoryList(google.protobuf.Empty) returns (GetDiseaseCategoryListResponse) {
         option (google.api.http) = {
             get: "/doctorbot/v1/knowledge/disease/category"
             body: "*"
         };
     }
-    // {en} Do disease search
-    // {cn} 疾病搜索
+    // {LANG:en} Do disease search
+    // {LANG:cn} 疾病搜索
     rpc DiseaseSearch(DiseaseSearchRequest) returns (DiseaseSearchResponse) {
         option (google.api.http) = {
             post: "/doctorbot/v1/knowledge/disease/search"
             body: "*"
         };
     }
-    // {en} Get all lab item categories
-    // {cn} 获得化验项目分类列表
+    // {LANG:en} Get all lab item categories
+    // {LANG:cn} 获得化验项目分类列表
     rpc GetLabItemCategoryList(google.protobuf.Empty) returns (GetLabItemCategoryListResponse) {
         option (google.api.http) = {
             get: "/doctorbot/v1/knowledge/labitem/category"
             body: "*"
         };
     }
-    // {en} Do lab item search
-    // {cn} 化验项目搜索
+    // {LANG:en} Do lab item search
+    // {LANG:cn} 化验项目搜索
     rpc LabItemSearch(LabItemSearchRequest) returns (LabItemSearchResponse) {
         option (google.api.http) = {
             post: "/doctorbot/v1/knowledge/labitem/search"
             body: "*"
         };
     }
-    // {en} Get all exam item categories
-    // {cn} 获得检查项目分类列表
+    // {LANG:en} Get all exam item categories
+    // {LANG:cn} 获得检查项目分类列表
     rpc GetExamItemCategoryList(google.protobuf.Empty) returns (GetExamItemCategoryListResponse) {
         option (google.api.http) = {
             get: "/doctorbot/v1/knowledge/examitem/category"
             body: "*"
         };
     }
-    // {en} Do exam item search
-    // {cn} 搜索检查项目
+    // {LANG:en} Do exam item search
+    // {LANG:cn} 搜索检查项目
     rpc ExamItemSearch(ExamItemSearchRequest) returns (ExamItemSearchResponse) {
         option (google.api.http) = {
             post: "/doctorbot/v1/knowledge/examitem/search"
             body: "*"
         };
     }
-    // {en} Do drug search
-    // {cn} 搜索药品
+    // {LANG:en} Do drug search
+    // {LANG:cn} 搜索药品
     rpc DrugSearch(DrugSearchRequest) returns (DrugSearchResponse) {
         option (google.api.http) = {
             post: "/doctorbot/v1/knowledge/drug/search"
