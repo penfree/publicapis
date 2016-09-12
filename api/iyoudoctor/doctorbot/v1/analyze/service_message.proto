@@ -260,6 +260,20 @@ message PredictedDiseasesAnalyzeRecommendDrug {
     // {LANG: en} The weight, fall in range [0.0, 1.0]
     // {LANG: cn} 权重，取值范围[0.0, 1.0]
     float weight = 2;
+    // {LANG: en} The recommend reason
+    // {LANG: cn} 推荐理由
+    repeated PredictedDiseaseRecommendedDrugReason reasons = 3;
+}
+
+// {LANG: en} The reason of recommended drug
+// {LANG: cn} 推荐用药的原因
+message PredictedDiseaseRecommendedDrugReason {
+    // {LANG: en} The reason title
+    // {LANG: cn} 原因标题
+    string title = 1;
+    // {LANG: en} The reason texts
+    // {LANG: cn} 原因的内容
+    repeated string texts = 2;
 }
 
 // {LANG: en} The response of required lab item
