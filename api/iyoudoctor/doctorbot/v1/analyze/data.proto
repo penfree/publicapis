@@ -1,8 +1,21 @@
 // Copyright 2016 北京大数医达科技有限公司
 //
 
+// {DOC: true}
 syntax = "proto3";
 
+// {LANG: en}
+// This package implements the disease prediction functions, including:
+// * Disease prediction
+// * Drug recommendation
+// * Department suggestion
+// * etc..
+// {LANG: cn}
+// 本模块实现了智能的诊断、预测等功能，包括但不限于：
+// * 疾病预测
+// * 用药推荐
+// * 建议科室
+// * 等等
 package iyoudoctor.doctorbot.v1.analyze;
 
 import "google/protobuf/timestamp.proto";
@@ -11,97 +24,97 @@ option java_multiple_files = true;
 option java_outer_classname = "DataProto";
 option java_package = "com.iyoudoctor.doctorbot.v1.analyze";
 
-// {LANG:en} Gender
-// {LANG:cn} 性别
+// {LANG: en} Gender
+// {LANG: cn} 性别
 enum Gender {
-    // {LANG:en} Unknown
-    // {LANG:cn} 未知
+    // {LANG: en} Unknown
+    // {LANG: cn} 未知
     GenderUnknown = 0;
-    // {LANG:en} Male
-    // {LANG:cn} 男
+    // {LANG: en} Male
+    // {LANG: cn} 男
     GenderMale = 1;
-    // {LANG:en} Female
-    // {LANG:cn} 女
+    // {LANG: en} Female
+    // {LANG: cn} 女
     GenderFemale = 2;
 }
 
-// {LANG:en} The user basic info
-// {LANG:cn} 用户基本信息
+// {LANG: en} The user basic info
+// {LANG: cn} 用户基本信息
 message UserBasicInfo {
-    // {LANG:en} The gender
-    // {LANG:cn} 性别
+    // {LANG: en} The gender
+    // {LANG: cn} 性别
     Gender gender = 1;
-    // {LANG:en} The age
-    // {LANG:cn} 年龄
+    // {LANG: en} The age
+    // {LANG: cn} 年龄
     int32 age = 2;
-    // {LANG:en} Birthday, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
-    // {LANG:cn} 出生日期，采用 RFC 3339 格式进行字符串序列化（举例：1972-01-01T10:00:20.021Z）
+    // {LANG: en} Birthday, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
+    // {LANG: cn} 出生日期，采用 RFC 3339 格式进行字符串序列化（举例：1972-01-01T10:00:20.021Z）
     google.protobuf.Timestamp birthday = 3;
 }
 
-// {LANG:en} The user symptom
-// {LANG:cn} 用户症状
+// {LANG: en} The user symptom
+// {LANG: cn} 用户症状
 message UserSymptom {
-    // {LANG:en} The name
-    // {LANG:cn} 名称
+    // {LANG: en} The name
+    // {LANG: cn} 名称
     string name = 1;
-    // {LANG:en} The state
-    // {LANG:cn} 状态
+    // {LANG: en} The state
+    // {LANG: cn} 状态
     SymptomState state = 2;
 }
 
-// {LANG:en} The state of symptom
-// {LANG:cn} 症状状态
+// {LANG: en} The state of symptom
+// {LANG: cn} 症状状态
 enum SymptomState {
-    // {LANG:en} Unknown
-    // {LANG:cn} 不确定
+    // {LANG: en} Unknown
+    // {LANG: cn} 不确定
     SymptomStateUnknown = 0;
-    // {LANG:en} Positive
-    // {LANG:cn} 存在该症状
+    // {LANG: en} Positive
+    // {LANG: cn} 存在该症状
     SymptomStatePositive = 1;
-    // {LANG:en} Negative
-    // {LANG:cn} 不存在该症状
+    // {LANG: en} Negative
+    // {LANG: cn} 不存在该症状
     SymptomStateNegative = 2;
 }
 
-// {LANG:en} The user lab item
-// {LANG:cn} 用户化验项目
+// {LANG: en} The user lab item
+// {LANG: cn} 用户化验项目
 message UserLabItem {
-    // {LANG:en} The name
-    // {LANG:cn} 名称
+    // {LANG: en} The name
+    // {LANG: cn} 名称
     string name = 1;
-    // {LANG:en} The specimen
-    // {LANG:cn} 样本
+    // {LANG: en} The specimen
+    // {LANG: cn} 样本
     string specimen = 2;
-    // {LANG:en} The numeric value
-    // {LANG:cn} 数值结果（当化验项目的值类型是数值型时）
+    // {LANG: en} The numeric value
+    // {LANG: cn} 数值结果（当化验项目的值类型是数值型时）
     float numericValue = 3;
-    // {LANG:en} The qualitative value
-    // {LANG:cn} 定性结果（当化验项目的值类型是定性类型时）
+    // {LANG: en} The qualitative value
+    // {LANG: cn} 定性结果（当化验项目的值类型是定性类型时）
     string qualitativeValue = 4;
-    // {LANG:en} The unit name. A necessary field when this is a numeric value
-    // {LANG:cn} 化验结果单位，当化验项目是数值型时，这个字段是必要的
+    // {LANG: en} The unit name. A necessary field when this is a numeric value
+    // {LANG: cn} 化验结果单位，当化验项目是数值型时，这个字段是必要的
     string unit = 5;
 }
 
-// {LANG:en} The user exam item
-// {LANG:cn} 用户检查项目
+// {LANG: en} The user exam item
+// {LANG: cn} 用户检查项目
 message UserExamItem {
-    // {LANG:en} The name
-    // {LANG:cn} 名称
+    // {LANG: en} The name
+    // {LANG: cn} 名称
     string name = 1;
-    // {LANG:en} The observations
-    // {LANG:cn} 检查观察结论
+    // {LANG: en} The observations
+    // {LANG: cn} 检查观察结论
     repeated UserExamItemObservation observations = 2;
 }
 
-// {LANG:en} The exam item observations
-// {LANG:cn} 检查项目观察结论
+// {LANG: en} The exam item observations
+// {LANG: cn} 检查项目观察结论
 message UserExamItemObservation {
-    // {LANG:en} The name
-    // {LANG:cn} 名称
+    // {LANG: en} The name
+    // {LANG: cn} 名称
     string name = 1;
-    // {LANG:en} The state
-    // {LANG:cn} 状态
+    // {LANG: en} The state
+    // {LANG: cn} 状态
     string state = 2;
 }
