@@ -118,3 +118,20 @@ message UserExamItemObservation {
     // {LANG: cn} 状态
     string state = 2;
 }
+
+// {LANG: en} The user disease
+// You should either provide icd10 or name in this request, if both are provided, icd10 will be used
+// {LANG: cn} 用户的疾病
+// 需要指定icd10或者name字段，如果两者都被指定会使用icd10字段
+message UserDisease {
+    // {LANG: en} The disease value
+    // {LANG: cn} 疾病的信息
+    oneof value {
+        // {LANG: en} The icd10 of the disease
+        // {LANG: cn} 疾病的ICD10编码
+        string icd10 = 1;
+        // {LANG: en} The name of the disease
+        // {LANG: cn} 疾病的名称
+        string name = 2;
+    }
+}

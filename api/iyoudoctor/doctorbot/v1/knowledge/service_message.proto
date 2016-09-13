@@ -87,21 +87,25 @@ message NameEntitySearchItem {
     // {LANG: en} The type of this search item
     // {LANG: cn} 实体类型
     EntityType type = 2;
-    // {LANG: en} The symptom
-    // {LANG: cn} 症状
-    Symptom symptom = 4;
-    // {LANG: en} The disease
-    // {LANG: cn} 疾病
-    Disease disease = 5;
-    // {LANG: en} The lab item
-    // {LANG: cn} 化验项目
-    LabItem labItem = 6;
-    // {LANG: en} The exam item
-    // {LANG: cn} 检查项目
-    ExamItem examItem = 7;
-    // {LANG: en} The drug
-    // {LANG: cn} 药品
-    Drug drug = 8;
+    // {LANG: en} The union value
+    // {LANG: cn} 结果
+    oneof value {
+        // {LANG: en} The symptom
+        // {LANG: cn} 症状
+        Symptom symptom = 4;
+        // {LANG: en} The disease
+        // {LANG: cn} 疾病
+        Disease disease = 5;
+        // {LANG: en} The lab item
+        // {LANG: cn} 化验项目
+        LabItem labItem = 6;
+        // {LANG: en} The exam item
+        // {LANG: cn} 检查项目
+        ExamItem examItem = 7;
+        // {LANG: en} The drug
+        // {LANG: cn} 药品
+        Drug drug = 8;
+    }
 }
 
 // {LANG: en} The response of symptom position list
