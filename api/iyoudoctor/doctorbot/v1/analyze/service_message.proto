@@ -108,6 +108,9 @@ message UserAnalyzeRequest {
     // {LANG: en} The user exam items
     // {LANG: cn} 用户检查项目列表
     repeated UserExamItem examItems = 6;
+    // {LANG: en} The user diseases
+    // {LANG: cn} 用户所患疾病
+    repeated UserDisease diseases = 7;
 }
 
 // {LANG: en} The options of user analyze

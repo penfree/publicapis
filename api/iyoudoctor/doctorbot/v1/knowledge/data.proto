@@ -193,7 +193,7 @@ message Drug {
     DrugOTCFlag otcFlag = 2;
     // {LANG: en} The instructions
     // {LANG: cn} 药品说明书
-    repeated DrugInstruction instructions = 10;
+    DrugInstruction instruction = 10;
 }
 
 // {LANG: en} The drug OTC flag
