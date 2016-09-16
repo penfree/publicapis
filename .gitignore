@@ -1,7 +1,7 @@
 # Git ignore file
 
 # The generated file
-gen
+gen/
 
 # The compiled libraries and binaries
 *.so
