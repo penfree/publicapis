@@ -20,6 +20,8 @@ package iyoudoctor.doctorbot.v1.analyze;
 
 import "google/protobuf/timestamp.proto";
 
+option go_package = "analyze";
+
 option java_multiple_files = true;
 option java_outer_classname = "DataProto";
 option java_package = "com.iyoudoctor.doctorbot.v1.analyze";
