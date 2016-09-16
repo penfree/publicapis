@@ -1,2 +1,15 @@
-# Ignore generated files
-gen/
+# Git ignore file
+
+# The generated file
+gen
+
+# The compiled libraries and binaries
+*.so
+*.exe
+*.dll
+
+# The python compiled codes
+__pycache__/
+*.py[cod]
+*$py.class
+

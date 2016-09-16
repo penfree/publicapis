@@ -5,7 +5,9 @@ syntax = "proto3";
 
 package iyoudoctor.doctorbot.v1.knowledge;
 
-import "iyoudoctor/doctorbot/v1/knowledge/data.proto";
+import "data.proto";
+
+option go_package = "knowledge";
 
 option java_multiple_files = true;
 option java_outer_classname = "ServiceMessageProto";
