@@ -9,11 +9,11 @@ CurrentDir := $(RootWorkDir)/include
 
 python:
 	@# Ensure the directory
-	mkdir -p $(PythonGenPath)/vendor
+	mkdir -p $(PythonGenPath)/_thirdparty
 	@# Run sub modules
 	@$(MAKE) -C $(CurrentDir)/google python
 	@# Create __init__.py
-	touch $(PythonGenPath)/vendor/__init__.py
+	touch $(PythonGenPath)/_thirdparty/__init__.py
 
 go:
 	@$(MAKE) -C $(CurrentDir)/google go

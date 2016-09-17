@@ -6,7 +6,7 @@ syntax = "proto3";
 package iyoudoctor.doctorbot.v1.knowledge;
 
 import "google/protobuf/empty.proto";
-import "vendor/google/api/annotations.proto";
+import "_thirdparty/google/api/annotations.proto";
 
 import "service_message.proto";
 
