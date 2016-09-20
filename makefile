@@ -45,7 +45,7 @@ ifndef GoGateway
 	export GoGateway = 0
 endif
 
-.PHONY: clean all python go 
+.PHONY: clean all python go
 
 all: python go
 
@@ -61,4 +61,3 @@ go:
 
 clean:
 	rm -rf $(GenPath)
-

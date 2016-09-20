@@ -1,0 +1,27 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+
+package iyoudoctor.iam.v1;
+
+import "_thirdparty/google/api/annotations.proto";
+
+import "data.proto";
+import "service_message.proto";
+
+option go_package = "iamv1";
+
+option java_generic_services = true;
+option java_multiple_files = true;
+option java_outer_classname = "ServicesProto";
+option java_package = "com.iyoudoctor.iam.v1";
+
+// The user service
+service UserService {
+}
+
+// The application service
+service ApplicationService {
+}

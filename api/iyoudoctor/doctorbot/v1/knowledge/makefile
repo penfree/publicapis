@@ -14,7 +14,7 @@ python: data.proto service_message.proto service.proto
 	$(Sed) -i "1s/^/#encoding=utf8\n/" *.py
 	@# Ensure output directory
 	mkdir -p $(PythonGenPath)/iyoudoctor/doctorbot/v1/knowledge
-	@# Copy generated go files
+	@# Copy generated python files
 	mv *.py $(PythonGenPath)/iyoudoctor/doctorbot/v1/knowledge/
 	@# Generate the __init__.py file
 	touch $(PythonGenPath)/iyoudoctor/doctorbot/v1/knowledge/__init__.py
@@ -27,7 +27,7 @@ go: data.proto service.proto service_message.proto
 		protoc -I=. -I $(RootAPIDir) -I $(RootWorkDir)/include -I _thirdparty=$(RootWorkDir)/include --grpc-gateway_out=$(GoCompileFlag),logtostderr=true:. service.proto; \
 	fi
 	@# Ensure output directory
-	mkdir -p $(GoGenPath)/iyoudoctor/doctorbot/v1/knowledge 
+	mkdir -p $(GoGenPath)/iyoudoctor/doctorbot/v1/knowledge
 	@# Copy generated go files
 	mv *.go $(GoGenPath)/iyoudoctor/doctorbot/v1/knowledge/
 

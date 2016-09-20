@@ -1,0 +1,157 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+// This package implements the oauth2 service message definitions
+// NOTE: These apis are designed for internal use only (or recommended), to use our oauth2 api, please visit our wiki.
+package iyoudoctor.oauth2.v1;
+
+option go_package = "oauth2v1";
+
+option java_multiple_files = true;
+option java_outer_classname = "ServiceMessageProto";
+option java_package = "com.iyoudoctor.oauth2.v1";
+
+message AuthorizationCodeGrantAuthorizationRequest {
+    // The application id
+    string appID = 1;
+    // The scope
+    repeated string scopes = 2;
+    // The redirect uri
+    string redirectUri = 3;
+    // The user agent
+    UserAgent agent = 15;
+}
+
+message AuthorizationCodeGrantAccessTokenRequest {
+    // The application id
+    string appID = 1;
+    // The authorization code
+    string code = 2;
+    // The redirect uri
+    string redirectUri = 3;
+}
+
+message ImplicitGrantRequest {
+    // The application id
+    string appID = 1;
+    // The scope
+    repeated string scopes = 2;
+    // The redirect uri
+    string redirectUri = 3;
+    // The user agent
+    UserAgent agent = 15;
+}
+
+message ResourceOwnerCredentialsGrantRequest {
+    // The application id
+    string appID = 1;
+    // The secret
+    string secret = 2;
+    // The scope
+    repeated string scopes = 3;
+    // The type
+    string type = 4;
+    // The user credential
+    map<string, string> credentials = 5;
+}
+
+message ClientCredentialsGrantRequest {
+    // The application id
+    string appID = 1;
+    // The secret
+    string secret = 2;
+    // The scope
+    repeated string scopes = 3;
+}
+
+message UserAgent {
+    // The user ip
+    string ip = 1;
+    // The user agent
+    message Agent {
+        // The agent type (name)
+        string type = 1;
+        // The agent version
+        string version = 2;
+    }
+    Agent agent = 2;
+    // The user os name
+    string os = 3;
+    // The user device
+    string device = 4;
+    // The user prefer story, such as: web / mobile / weixin / ...
+    string prefer = 5;
+}
+
+// The authorization state
+enum AuthorizationState {
+    // Error happened
+    AuthorizationStateError = 0;
+    // User permitted and related resources generated
+    AuthorizationStatePermitted = 1;
+    // User denied
+    AuthorizationStateDenied = 2;
+    // Require user authentication
+    AuthorizationStateAuthenticationRequired = 3;
+}
+
+// The authorization error
+message AuthorizationError {
+    // The error code
+    string code = 1;
+    // The error message
+    string message = 2;
+}
+
+message AuthorizationCodeGrantAuthorizationResponse {
+    // The state
+    AuthorizationState state = 1;
+    // The redirect uri
+    string redirectUri = 2;
+    // The authorization code
+    string code = 3;
+    // The error
+    AuthorizationError error = 15;
+}
+
+message AuthorizationCodeGrantAccessTokenResponse {
+    // The state
+    AuthorizationState state = 1;
+    // The redirect uri
+    string redirectUri = 2;
+    // The access token
+    string token = 3;
+    // The error
+    AuthorizationError error = 15;
+}
+
+message ImplicitGrantResponse {
+    // The state
+    AuthorizationState state = 1;
+    // The redirect uri
+    string redirectUri = 2;
+    // The access token
+    string token = 3;
+    // The error
+    AuthorizationError error = 15;
+}
+
+message ResourceOwnerCredentialsGrantResponse {
+    // The state
+    AuthorizationState state = 1;
+    // The access token
+    string token = 2;
+    // The error
+    AuthorizationError error = 15;
+}
+
+message ClientCredentialsGrantResponse {
+    // The state
+    AuthorizationState state = 1;
+    // The access token
+    string token = 2;
+    // The error
+    AuthorizationError error = 15;
+}
