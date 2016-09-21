@@ -1,0 +1,27 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.partner.mercury.drug.v1;
+
+import "_thirdparty/google/api/annotations.proto";
+
+import "service_message.proto";
+
+option go_package = "drugv1";
+
+option java_generic_services = true;
+option java_multiple_files = true;
+option java_outer_classname = "ServicesProto";
+option java_package = "com.iyoudoctor.partner.mercury.drug.v1";
+
+// The drug service
+service DrugService {
+    rpc GetProducts(GetDrugProductRequest) returns (GetDrugProductResponse) {
+        option (google.api.http) = {
+            post: "/partner/mercury/drug/v1/products"
+            body: "*"
+        };
+    }
+}
