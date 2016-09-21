@@ -18,24 +18,25 @@ option java_package = "com.iyoudoctor.doctorbot.v1.knowledge.analyze";
 // {LANG: en} The user analyze target
 // {LANG: cn} 用户分析目标
 enum UserAnalyzeTarget {
+    UserAnalyzeTargetNone = 0;
     // {LANG: en} More symptoms, always be used when asking user to provide more information
     // {LANG: cn} 更多症状， 经常被用在追问用户更多信息
-    UserAnalyzeTargetMoreSymptoms = 0;
+    UserAnalyzeTargetMoreSymptoms = 1;
     // {LANG: en} Suggested departments
     // {LANG: cn} 建议就诊的科室
-    UserAnalyzeTargetSuggestedDepartments = 1;
+    UserAnalyzeTargetSuggestedDepartments = 2;
     // {LANG: en} Predicted diseases
     // {LANG: cn} 预测可能的疾病
-    UserAnalyzeTargetPredictedDiseases = 2;
+    UserAnalyzeTargetPredictedDiseases = 3;
     // {LANG: en} Required lab items for further diagnosis
     // {LANG: cn} 进一步诊断需要的化验项目
-    UserAnalyzeTargetRequiredLabItems = 3;
+    UserAnalyzeTargetRequiredLabItems = 4;
     // {LANG: en} Required exam items for further diagnosis
     // {LANG: cn} 进一步诊断需要的检查项目
-    UserAnalyzeTargetRequiredExamItems = 4;
+    UserAnalyzeTargetRequiredExamItems = 5;
     // {LANG: en} Recommend drugs
     // {LANG: cn} 推荐用药
-    UserAnalyzeTargetRecommendedDrugs = 5;
+    UserAnalyzeTargetRecommendedDrugs = 6;
 }
 
 // {LANG: en} The options of more symptoms

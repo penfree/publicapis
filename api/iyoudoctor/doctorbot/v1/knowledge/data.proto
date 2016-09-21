@@ -16,32 +16,34 @@ option java_package = "com.iyoudoctor.doctorbot.v1.knowledge";
 // {LANG: cn}
 // 知识实体类型，知识库保存的所有实体均隶属于以下的一种类型之一。
 enum EntityType {
+    EntityTypeNone = 0;
     // {LANG: en} Symptom
     // {LANG: cn} 症状
-    EntityTypeSymptom = 0;
+    EntityTypeSymptom = 1;
     // {LANG: en} Disease
     // {LANG: cn} 疾病
-    EntityTypeDisease = 1;
+    EntityTypeDisease = 2;
     // {LANG: en} Lab item
     // {LANG: cn} 化验项目
-    EntityTypeLabItem = 2;
+    EntityTypeLabItem = 3;
     // {LANG: en} Exam item
     // {LANG: cn} 检查项目
-    EntityTypeExamItem = 3;
+    EntityTypeExamItem = 4;
     // {LANG: en} Drug
     // {LANG: cn} 药品
-    EntityTypeDrug = 4;
+    EntityTypeDrug = 5;
 }
 
 // {LANG: en} The type of symptom
 // {LANG: cn} 症状的类型
 enum SymptomType {
+    SymptomTypeNone = 0;
     // {LANG: en} The symptom
     // {LANG: cn} 症状
-    SymptomTypeSymptom = 0;
+    SymptomTypeSymptom = 1;
     // {LANG: en} The vital sign
     // {LANG: cn} 生命体征
-    SymptomTypeVitalSign = 1;
+    SymptomTypeVitalSign = 2;
 }
 
 // {LANG: en} The symptom entity definition
@@ -110,12 +112,13 @@ message LabItem {
 // {LANG: en} The definition of lab item value type
 // {LANG: cn} 化验值类型定义
 enum LabItemValueType {
+    LabItemValueTypeNone = 0;
     // {LANG: en} The value should be a numeric value
     // {LANG: cn} 数值类型
-    Numeric = 0;
+    LabItemValueTypeNumeric = 1;
     // {LANG: en} The value should be a qualitative value
     // {LANG: cn} 定性类型
-    Qualitative = 1;
+    LabItemValueTypeQualitative = 2;
 }
 
 // {LANG: en} The definition of lab item unit

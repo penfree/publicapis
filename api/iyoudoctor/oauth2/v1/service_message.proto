@@ -87,14 +87,14 @@ message UserAgent {
 
 // The authorization state
 enum AuthorizationState {
-    // Error happened
-    AuthorizationStateError = 0;
     // User permitted and related resources generated
-    AuthorizationStatePermitted = 1;
+    AuthorizationStatePermitted = 0;
     // User denied
-    AuthorizationStateDenied = 2;
+    AuthorizationStateDenied = 1;
     // Require user authentication
-    AuthorizationStateAuthenticationRequired = 3;
+    AuthorizationStateAuthenticationRequired = 2;
+    // Error happened
+    AuthorizationStateError = 3;
 }
 
 // The authorization error
