@@ -326,3 +326,11 @@ message DrugSearchResponse {
     // {LANG: cn} 结果总数
     int32 totalSize = 15;
 }
+
+message GetDrugByNamesRequest {
+    repeated string names = 1;
+}
+
+message GetDrugByNamesResponse {
+    repeated Drug drugs = 1;
+}

@@ -29,12 +29,14 @@ message Token {
     TokenType type = 1;
     // The application id
     string appID = 2;
-    // The open user id (Which is app isolated)
-    string openUserID = 3;
+    // The user id
+    string userID = 3;
+    // The authorized time in utc, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
+    google.protobuf.Timestamp utctime = 4;
     // The expire time in utc, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
-    google.protobuf.Timestamp expireTimeInUTC = 4 [json_name="exp"];
+    google.protobuf.Timestamp utcexp = 5;
     // The scopes
-    repeated string scopes = 5;
+    repeated string scopes = 6;
 }
 
 // The user
