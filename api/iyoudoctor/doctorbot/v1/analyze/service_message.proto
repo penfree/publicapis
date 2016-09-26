@@ -42,52 +42,64 @@ enum UserAnalyzeTarget {
 // {LANG: en} The options of more symptoms
 // {LANG: cn} 更多症状选项
 message MoreSymptomsOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 1 by default
     // {LANG: cn} 返回的结果数，默认值是1
-    int32 size = 1;
+    int32 size = 2;
 }
 
 // {LANG: en} The options of suggested departments
 // {LANG: cn} 建议科室选项
 message SuggestedDepartmentsOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 5 by default
     // {LANG: cn} 返回的结果数，默认值是5
-    int32 size = 1;
+    int32 size = 2;
 }
 
 // {LANG: en} The options of predicted disease
 // {LANG: cn} 预测的疾病选项
 message PredictedDiseasesOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 10 by default
     // {LANG: cn} 返回的结果数，默认值是10
-    int32 size = 1;
+    int32 size = 2;
 }
 
 // {LANG: en} The options of required lab item
 // {LANG: cn} 需要的化验项目选项
 message RequiredLabItemsOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 10 by default
     // {LANG: cn} 返回的结果数，默认值是10
-    int32 size = 1;
+    int32 size = 2;
 }
 
 // {LANG: en} The options of required exam items
 // {LANG: cn} 需要的检查项目选项
 message RequiredExamItemsOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 10 by default
     // {LANG: cn} 返回的结果数，默认值是10
-    int32 size = 1;
+    int32 size = 2;
 }
 
 // {LANG: en} The options of recommended drugs
 // {LANG: cn} 推荐的药品选项
 message RecommendedDrugsOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 10 by default
     // {LANG: cn} 返回的结果数，默认值是10
-    int32 size = 1;
+    int32 size = 2;
     // {LANG: en} The OTC flag
     // {LANG: cn} 处方/非处方标识
-    iyoudoctor.doctorbot.v1.knowledge.DrugOTCFlag otcFlag = 2;
+    iyoudoctor.doctorbot.v1.knowledge.DrugOTCFlag otcFlag = 3;
 }
 
 // {LANG: en} The request of user analyze

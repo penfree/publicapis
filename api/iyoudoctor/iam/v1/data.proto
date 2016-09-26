@@ -54,5 +54,5 @@ message Application {
     // The secret
     string secret = 2;
     // The signature public key
-    string signPubKey = 3;
+    string publicKey = 3;
 }

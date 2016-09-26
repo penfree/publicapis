@@ -14,7 +14,7 @@ option java_multiple_files = true;
 option java_outer_classname = "RequestSignProto";
 option java_package = "com.iyoudoctor.internals.framework";
 
-message HttpJsonRequestSignature {
+message HttpRequestSignature {
     // The application id
     string appID = 1;
     // The path name
@@ -23,7 +23,7 @@ message HttpJsonRequestSignature {
     google.protobuf.Timestamp utctime = 15;
 }
 
-message GRPCRequestSignature {
+message GrpcRequestSignature {
     // The application id
     string appID = 1;
     // The package name

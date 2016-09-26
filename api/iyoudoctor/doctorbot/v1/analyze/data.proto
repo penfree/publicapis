@@ -48,10 +48,17 @@ message UserBasicInfo {
     Gender gender = 1;
     // {LANG: en} The age
     // {LANG: cn} 年龄
-    int32 age = 2;
+    UserAge age = 2;
     // {LANG: en} Birthday, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
     // {LANG: cn} 出生日期，采用 RFC 3339 格式进行字符串序列化（举例：1972-01-01T10:00:20.021Z）
     google.protobuf.Timestamp birthday = 3;
+}
+
+message UserAge {
+    // The year
+    int32 year = 1;
+    // The month
+    int32 month = 2;
 }
 
 // {LANG: en} The user symptom

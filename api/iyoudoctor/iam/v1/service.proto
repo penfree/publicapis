@@ -8,7 +8,6 @@ package iyoudoctor.iam.v1;
 
 import "_thirdparty/google/api/annotations.proto";
 
-import "data.proto";
 import "service_message.proto";
 
 option go_package = "iamv1";
@@ -20,8 +19,10 @@ option java_package = "com.iyoudoctor.iam.v1";
 
 // The user service
 service UserService {
+
 }
 
 // The application service
 service ApplicationService {
+    rpc GetByID(GetApplicationByIDRequest) returns (GetApplicationByIDResponse) {}
 }

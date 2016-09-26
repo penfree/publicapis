@@ -12,3 +12,13 @@ option go_package = "iamv1";
 option java_multiple_files = true;
 option java_outer_classname = "ServiceMessageProto";
 option java_package = "com.iyoudoctor.iam.v1";
+
+message GetApplicationByIDRequest {
+    // The application id
+    string id = 1;
+}
+
+message GetApplicationByIDResponse {
+    // The application
+    Application app = 1;
+}
