@@ -1,0 +1,42 @@
+# encoding=utf8
+
+""" The framework python binding
+    Author: lipixun
+    Created Time : Monday  9/26 17:06:29 2016
+
+    File Name: fw.py
+    Description:
+
+"""
+
+from invocation_pb2 import InvokeContext
+
+def fromGrpcContext(context):
+    """Create invoke context from grpc context
+    """
+    meta = context.invocation_metadata()
+    ctx = InvokeContext()
+    for name, value in meta:
+        name = name.lower()
+        if name == "x-openapi-request-id":
+            ctx.requestID = value
+        elif name == "user-agent":
+            ctx.userAgent = value
+        elif name == "x-forwarded-host":
+            ctx.forwarder.host = value
+        elif name == "x-forwarded-for":
+            ctx.forwarder.ip = value
+        elif name == "x-openapi-auth":
+            ctx.authorized = value == "true"
+        elif name == "x-openapi-auth-appid":
+            ctx.invoker.app.id = value
+        elif name == "x-openapi-auth-userid":
+            ctx.invoker.user.id = value
+        else:
+            # TODO: More fields
+            pass
+    return ctx
+
+InvokeContext.fromGrpcContext = staticmethod(fromGrpcContext)
+
+__all__ = [ "InvokeContext" ]

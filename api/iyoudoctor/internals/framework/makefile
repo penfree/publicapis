@@ -17,8 +17,8 @@ python: $(Protofiles)
 	mkdir -p $(PythonGenPath)/iyoudoctor/internals/framework
 	@# Copy generated python files
 	mv *.py $(PythonGenPath)/iyoudoctor/internals/framework/
-	@# Generate the __init__.py file
-	touch $(PythonGenPath)/iyoudoctor/internals/framework/__init__.py
+	@# Copy the __init__.py file
+	cp __init__.py.template $(PythonGenPath)/iyoudoctor/internals/framework/__init__.py
 
 go: $(Protofiles)
 	@# Compile go modules
