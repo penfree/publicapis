@@ -123,6 +123,10 @@ message AuthorizationCodeGrantAccessTokenResponse {
     string redirectUri = 2;
     // The access token
     string token = 3;
+    // The expire in seconds
+    int32 expires = 4;
+    // The user id
+    string userID = 5;
     // The error
     AuthorizationError error = 15;
 }
@@ -134,6 +138,10 @@ message ImplicitGrantResponse {
     string redirectUri = 2;
     // The access token
     string token = 3;
+    // The expire in seconds
+    int32 expires = 4;
+    // The user id
+    string userID = 5;
     // The error
     AuthorizationError error = 15;
 }
@@ -143,6 +151,10 @@ message ResourceOwnerCredentialsGrantResponse {
     AuthorizationState state = 1;
     // The access token
     string token = 2;
+    // The expire in seconds
+    int32 expires = 3;
+    // The user id
+    string userID = 4;
     // The error
     AuthorizationError error = 15;
 }
@@ -152,6 +164,8 @@ message ClientCredentialsGrantResponse {
     AuthorizationState state = 1;
     // The access token
     string token = 2;
+    // The expire in seconds
+    int32 expires = 3;
     // The error
     AuthorizationError error = 15;
 }
