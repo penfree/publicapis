@@ -13,7 +13,7 @@ option java_multiple_files = true;
 option java_outer_classname = "ServiceMessageProto";
 option java_package = "com.iyoudoctor.oauth2.v1";
 
-message AuthorizationCodeGrantAuthorizationRequest {
+message AuthorizationCodeGrantRequest {
     // The application id
     string appID = 1;
     // The user id
@@ -104,7 +104,7 @@ message AuthorizationError {
     string message = 2;
 }
 
-message AuthorizationCodeGrantAuthorizationResponse {
+message AuthorizationCodeGrantResponse {
     // The state
     AuthorizationState state = 1;
     // The redirect uri

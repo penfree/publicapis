@@ -18,7 +18,7 @@ option java_package = "com.iyoudoctor.oauth2.v1";
 // The oauth2 service
 service OAuth2Service {
     // Do authorization code grant
-    rpc AuthorizationCodeGrant(AuthorizationCodeGrantAuthorizationRequest) returns (AuthorizationCodeGrantAuthorizationResponse) {}
+    rpc AuthorizationCodeGrant(AuthorizationCodeGrantRequest) returns (AuthorizationCodeGrantResponse) {}
     // Do implicit grant
     rpc ImplicitGrant(ImplicitGrantRequest) returns (ImplicitGrantResponse) {}
     // Do resource owner credentials grant
