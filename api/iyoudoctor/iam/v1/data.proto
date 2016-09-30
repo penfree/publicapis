@@ -1,0 +1,47 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+// This package implements the identity & access management related interfaces
+package iyoudoctor.iam.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "iamv1";
+
+option java_multiple_files = true;
+option java_outer_classname = "DataProto";
+option java_package = "com.iyoudoctor.iam.v1";
+
+// Represent a token
+message Token {
+    // The application id
+    string appID = 1;
+    // The user id
+    string userID = 2;
+    // The authorized time in utc, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
+    google.protobuf.Timestamp utctime = 3;
+    // The expire time in utc, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
+    google.protobuf.Timestamp utcexp = 4;
+    // The scopes
+    repeated string scopes = 5;
+}
+
+// The user
+message User {
+    // The user id (Which is app isolated)
+    string id = 1;
+    // The user nick name
+    string nickname = 2;
+}
+
+// The application
+message Application {
+    // The app id
+    string id = 1;
+    // The secret
+    string secret = 2;
+    // The signature public key
+    string publicKey = 3;
+}

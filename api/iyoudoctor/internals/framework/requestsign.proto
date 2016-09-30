@@ -1,0 +1,37 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+// This package implements the request sign related data definitions of internal framework
+package iyoudoctor.internals.framework;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "framework";
+
+option java_multiple_files = true;
+option java_outer_classname = "RequestSignProto";
+option java_package = "com.iyoudoctor.internals.framework";
+
+message HttpRequestSignature {
+    // The application id
+    string appID = 1;
+    // The path name
+    string path = 2;
+    // The time
+    google.protobuf.Timestamp utctime = 15;
+}
+
+message GrpcRequestSignature {
+    // The application id
+    string appID = 1;
+    // The package name
+    string package = 2;
+    // The service name
+    string service = 3;
+    // The method name
+    string method = 4;
+    // The time
+    google.protobuf.Timestamp utctime = 15;
+}

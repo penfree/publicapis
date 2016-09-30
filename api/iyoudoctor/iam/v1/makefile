@@ -5,7 +5,7 @@
 
 .PHONY: python go clean
 
-CurrentDir := $(RootWorkDir)/api/iyoudoctor/doctorbot/v1/knowledge
+CurrentDir := $(RootWorkDir)/api/iyoudoctor/iam/v1
 ProtoFiles := data.proto service_message.proto service.proto
 
 python: $(ProtoFiles)
@@ -14,23 +14,22 @@ python: $(ProtoFiles)
 	@# Insert the encoding to script head
 	$(Sed) -i "1s/^/#encoding=utf8\n/" *.py
 	@# Ensure output directory
-	mkdir -p $(PythonGenPath)/iyoudoctor/doctorbot/v1/knowledge
+	mkdir -p $(PythonGenPath)/iyoudoctor/iam/v1
 	@# Copy generated python files
-	mv *.py $(PythonGenPath)/iyoudoctor/doctorbot/v1/knowledge/
+	mv *.py $(PythonGenPath)/iyoudoctor/iam/v1/
 	@# Generate the __init__.py file
-	touch $(PythonGenPath)/iyoudoctor/doctorbot/v1/knowledge/__init__.py
+	touch $(PythonGenPath)/iyoudoctor/iam/v1/__init__.py
 
 go: $(ProtoFiles)
 	@# Compile go modules
-	protoc -I . -I $(RootAPIDir) -I $(RootWorkDir)/include -I _thirdparty=$(RootWorkDir)/include --go_out=plugins=grpc,$(GoCompileFlag):. $(ProtoFiles)
-	@# Generate go gateway
+	protoc -I . -I $(RootAPIDir) -I $(RootWorkDir)/include -I _thirdparty=$(RootWorkDir)/include --go_out=plugins=grpc,$(GoCompileFlag),Miyoudoctor/doctorbot/v1/knowledge/data.proto=$(GoRootPackage)/iyoudoctor/doctorbot/v1/knowledge:. $(ProtoFiles)
 	@if [ $(GoGateway) == 1 ]; then \
 		protoc -I=. -I $(RootAPIDir) -I $(RootWorkDir)/include -I _thirdparty=$(RootWorkDir)/include --grpc-gateway_out=$(GoCompileFlag),logtostderr=true:. service.proto; \
 	fi
 	@# Ensure output directory
-	mkdir -p $(GoGenPath)/iyoudoctor/doctorbot/v1/knowledge
+	mkdir -p $(GoGenPath)/iyoudoctor/iam/v1
 	@# Copy generated go files
-	mv *.go $(GoGenPath)/iyoudoctor/doctorbot/v1/knowledge/
+	mv *.go $(GoGenPath)/iyoudoctor/iam/v1/
 
 clean:
 	rm *.py *.go

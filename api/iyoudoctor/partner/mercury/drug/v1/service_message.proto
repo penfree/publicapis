@@ -1,0 +1,30 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.partner.mercury.drug.v1;
+
+import "data.proto";
+
+option go_package = "drugv1";
+
+option java_multiple_files = true;
+option java_outer_classname = "ServiceMessageProto";
+option java_package = "com.iyoudoctor.partner.mercury.drug.v1";
+
+message GetDrugProductRequest {
+    // The common names
+    repeated string commonNames = 1;
+    // The size of the products for each name
+    int32 size = 15;
+}
+
+message GetDrugProductResponse {
+
+    message ProductItem {
+        repeated Product products = 1;
+    }
+
+    map<string, ProductItem> products = 1;
+}

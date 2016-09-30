@@ -1,0 +1,45 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.user.v1.mr;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "mr";
+
+option java_multiple_files = true;
+option java_outer_classname = "DataProto";
+option java_package = "com.iyoudoctor.user.v1.mr";
+
+message MedicalRecord {
+    // The id
+    string id = 1;
+    // Submit time, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
+    google.protobuf.Timestamp time = 2;
+    // The name
+    MedicalRecordUser user = 3;
+    // The content
+    MedicalRecordContent content = 4;
+}
+
+// The medical record user info
+message MedicalRecordUser {
+    // The gender
+    string gender = 1;
+    // The age
+    int32 age = 2;
+}
+
+// The medical record content
+message MedicalRecordContent {
+    // The symptoms
+    repeated string symptoms = 1;
+    // The drug size
+    int32 drugSize = 2;
+    // The drugs
+    repeated string drugs = 3;
+    // The user choose
+    bool userChoose = 4;
+}

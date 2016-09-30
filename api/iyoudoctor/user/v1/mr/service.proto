@@ -1,0 +1,42 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.user.v1.mr;
+
+//import "google/protobuf/empty.proto";
+import "_thirdparty/google/api/annotations.proto";
+
+import "service_message.proto";
+
+option go_package = "mr";
+
+option java_generic_services = true;
+option java_multiple_files = true;
+option java_outer_classname = "ServicesProto";
+option java_package = "com.iyoudoctor.user.v1.mr";
+
+// The medical record service
+service MedicalRecordService {
+    // Get medical record
+    rpc GetMedicalRecord(GetMedicalRecordRequest) returns (GetMedicalRecordResponse) {
+        option (google.api.http) = {
+            get: "/user/v1/mr/{id}"
+        };
+    }
+    // Get medical record by member
+    rpc GetMedicalRecordsByMember(GetMedicalRecordsByMemberRequest) returns (GetMedicalRecordsByMemberResponse) {
+        option (google.api.http) = {
+            post: "/user/v1/member/{id}/mr"
+            body: "*"
+        };
+    }
+    // Create a medical record
+    rpc CreateMedicalRecord(CreateMedicalRecordRequest) returns (CreateMedicalRecordResponse) {
+        option (google.api.http) = {
+            post: "/user/v1/mr"
+            body: "*"
+        };
+    }
+}

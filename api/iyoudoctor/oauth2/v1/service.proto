@@ -1,0 +1,28 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+// This package implements the oauth2 service message definitions
+// NOTE: These apis are designed for internal use only (or recommended), to use our oauth2 api, please visit our wiki.
+package iyoudoctor.oauth2.v1;
+
+import "service_message.proto";
+
+option go_package = "oauth2v1";
+
+option java_multiple_files = true;
+option java_outer_classname = "ServicesProto";
+option java_package = "com.iyoudoctor.oauth2.v1";
+
+// The oauth2 service
+service OAuth2Service {
+    // Do authorization code grant
+    rpc AuthorizationCodeGrant(AuthorizationCodeGrantRequest) returns (AuthorizationCodeGrantResponse) {}
+    // Do implicit grant
+    rpc ImplicitGrant(ImplicitGrantRequest) returns (ImplicitGrantResponse) {}
+    // Do resource owner credentials grant
+    rpc ResourceOwnerCredentialsGrant(ResourceOwnerCredentialsGrantRequest) returns (ResourceOwnerCredentialsGrantResponse) {}
+    // Do client credentials grant
+    rpc ClientCredentialsGrant(ClientCredentialsGrantRequest) returns (ClientCredentialsGrantResponse) {}
+}

@@ -1,0 +1,48 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.user.v1.member;
+
+import "google/protobuf/empty.proto";
+import "_thirdparty/google/api/annotations.proto";
+
+import "service_message.proto";
+
+option go_package = "member";
+
+option java_generic_services = true;
+option java_multiple_files = true;
+option java_outer_classname = "ServicesProto";
+option java_package = "com.iyoudoctor.user.v1.member";
+
+// The member service
+service MemberService {
+    // Get member list
+    rpc GetMembers(google.protobuf.Empty) returns (GetMembersResponse) {
+        option (google.api.http) = {
+            get: "/user/v1/member"
+        };
+    }
+    // Create member
+    rpc CreateMember(CreateMemberRequest) returns (CreateMemberResponse) {
+        option (google.api.http) = {
+            post: "/user/v1/member"
+            body: "*"
+        };
+    }
+    // Update member
+    rpc UpdateMember(UpdateMemberRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            put: "/user/v1/member"
+            body: "*"
+        };
+    }
+    // Remove member
+    rpc RemoveMember(RemoveMemberRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/user/v1/member/{id}"
+        };
+    }
+}

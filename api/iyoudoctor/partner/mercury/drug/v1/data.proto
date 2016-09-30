@@ -1,0 +1,20 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.partner.mercury.drug.v1;
+
+option go_package = "drugv1";
+
+option java_multiple_files = true;
+option java_outer_classname = "DataProto";
+option java_package = "com.iyoudoctor.partner.mercury.drug.v1";
+
+// A product
+message Product {
+    // The product id
+    string id = 1;
+    // The product name
+    string name = 2;
+}

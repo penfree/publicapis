@@ -5,15 +5,15 @@
 
 .PHONY: python go
 
-CurrentDir := $(RootWorkDir)/api/iyoudoctor/doctorbot
+CurrentDir := $(RootWorkDir)/api/iyoudoctor/partner/mercury/drug
 
 python:
 	@# Ensure the directory
-	mkdir -p $(PythonGenPath)/iyoudoctor/doctorbot
+	mkdir -p $(PythonGenPath)/iyoudoctor/partner/mercury/drug
 	@# Run sub modules
 	@$(MAKE) -C $(CurrentDir)/v1 python
 	@#Create the __init__.py
-	touch $(PythonGenPath)/iyoudoctor/doctorbot/__init__.py
+	touch $(PythonGenPath)/iyoudoctor/partner/mercury/drug/__init__.py
 
 go:
 	@$(MAKE) -C $(CurrentDir)/v1 go

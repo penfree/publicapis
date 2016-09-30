@@ -3,7 +3,7 @@
 # 	Copyright 2016 北京大数医达科技有限公司
 #
 
-.PHONY: python go 
+.PHONY: python go
 
 CurrentDir := $(RootWorkDir)/api
 RootAPIDir := $(CurrentDir)
@@ -22,4 +22,3 @@ python:
 
 go:
 	@$(MAKE) -C $(CurrentDir)/iyoudoctor go
-

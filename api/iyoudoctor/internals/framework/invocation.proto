@@ -1,0 +1,54 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+// This package implements the invocation related data definitions of internal framework
+package iyoudoctor.internals.framework;
+
+option go_package = "framework";
+
+option java_multiple_files = true;
+option java_outer_classname = "InvocationProto";
+option java_package = "com.iyoudoctor.internals.framework";
+
+message InvokeContext {
+    // The request id
+    string requestID = 1;
+    // The user agent
+    string userAgent = 2;
+    // The forwarder
+    Forwarder forwarder = 3;
+    // Is the invocation authenticated
+    bool authorized = 4;
+    // The invoker
+    Invoker invoker = 5;
+}
+
+message Forwarder {
+    // The forwarder host
+    string host = 1;
+    // The forwarder ip
+    string ip = 2;
+}
+
+message Invoker {
+    // The invoke application
+    InvokeApplication app = 1;
+    // The invoke user
+    InvokeUser user = 2;
+}
+
+message InvokeApplication {
+    // The app id
+    string id = 1;
+    // The pub key (This field could be used to generate the encrypted message that could only be decoded by the application)
+    string publicKey = 2;
+    // The tags
+    repeated string tags = 3;
+}
+
+message InvokeUser {
+    // The user id
+    string id = 1;
+}

@@ -18,75 +18,90 @@ option java_package = "com.iyoudoctor.doctorbot.v1.knowledge.analyze";
 // {LANG: en} The user analyze target
 // {LANG: cn} 用户分析目标
 enum UserAnalyzeTarget {
+    UserAnalyzeTargetNone = 0;
     // {LANG: en} More symptoms, always be used when asking user to provide more information
     // {LANG: cn} 更多症状， 经常被用在追问用户更多信息
-    UserAnalyzeTargetMoreSymptoms = 0;
+    UserAnalyzeTargetMoreSymptoms = 1;
     // {LANG: en} Suggested departments
     // {LANG: cn} 建议就诊的科室
-    UserAnalyzeTargetSuggestedDepartments = 1;
+    UserAnalyzeTargetSuggestedDepartments = 2;
     // {LANG: en} Predicted diseases
     // {LANG: cn} 预测可能的疾病
-    UserAnalyzeTargetPredictedDiseases = 2;
+    UserAnalyzeTargetPredictedDiseases = 3;
     // {LANG: en} Required lab items for further diagnosis
     // {LANG: cn} 进一步诊断需要的化验项目
-    UserAnalyzeTargetRequiredLabItems = 3;
+    UserAnalyzeTargetRequiredLabItems = 4;
     // {LANG: en} Required exam items for further diagnosis
     // {LANG: cn} 进一步诊断需要的检查项目
-    UserAnalyzeTargetRequiredExamItems = 4;
+    UserAnalyzeTargetRequiredExamItems = 5;
     // {LANG: en} Recommend drugs
     // {LANG: cn} 推荐用药
-    UserAnalyzeTargetRecommendedDrugs = 5;
+    UserAnalyzeTargetRecommendedDrugs = 6;
 }
 
 // {LANG: en} The options of more symptoms
 // {LANG: cn} 更多症状选项
 message MoreSymptomsOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 1 by default
     // {LANG: cn} 返回的结果数，默认值是1
-    int32 size = 1;
+    int32 size = 2;
 }
 
 // {LANG: en} The options of suggested departments
 // {LANG: cn} 建议科室选项
 message SuggestedDepartmentsOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 5 by default
     // {LANG: cn} 返回的结果数，默认值是5
-    int32 size = 1;
+    int32 size = 2;
 }
 
 // {LANG: en} The options of predicted disease
 // {LANG: cn} 预测的疾病选项
 message PredictedDiseasesOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 10 by default
     // {LANG: cn} 返回的结果数，默认值是10
-    int32 size = 1;
+    int32 size = 2;
 }
 
 // {LANG: en} The options of required lab item
 // {LANG: cn} 需要的化验项目选项
 message RequiredLabItemsOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 10 by default
     // {LANG: cn} 返回的结果数，默认值是10
-    int32 size = 1;
+    int32 size = 2;
 }
 
 // {LANG: en} The options of required exam items
 // {LANG: cn} 需要的检查项目选项
 message RequiredExamItemsOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 10 by default
     // {LANG: cn} 返回的结果数，默认值是10
-    int32 size = 1;
+    int32 size = 2;
 }
 
 // {LANG: en} The options of recommended drugs
 // {LANG: cn} 推荐的药品选项
 message RecommendedDrugsOptions {
+    // The start
+    int32 start = 1;
     // {LANG: en} The return result size, 10 by default
     // {LANG: cn} 返回的结果数，默认值是10
-    int32 size = 1;
+    int32 size = 2;
     // {LANG: en} The OTC flag
     // {LANG: cn} 处方/非处方标识
-    iyoudoctor.doctorbot.v1.knowledge.DrugOTCFlag otcFlag = 2;
+    iyoudoctor.doctorbot.v1.knowledge.DrugOTCFlag otcFlag = 3;
+    // Enable highlight or not
+    bool highlight = 4;
 }
 
 // {LANG: en} The request of user analyze
@@ -324,6 +339,18 @@ message RecommendedDrugsAnalyzeResponse {
     // {LANG: en} The drugs
     // {LANG: cn} 药品列表
     repeated RecommendedDrugsAnalyzeItem drugs = 1;
+    // {LANG: en} The search result start from
+    // {LANG: cn} 搜索结果起始
+    int32 start = 12;
+    // {LANG: en} The search result items size
+    // {LANG: cn} 搜索结果数
+    int32 size = 13;
+    // {LANG: en} the requested search result item size
+    // {LANG: cn} 请求的搜索结果数
+    int32 requestedSize = 14;
+    // {LANG: en} The total result size
+    // {LANG: cn} 结果总数
+    int32 totalSize = 15;
 }
 
 // {LANG: en} The response item of recommended drugs

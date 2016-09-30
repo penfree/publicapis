@@ -96,4 +96,11 @@ service KnowledgeService {
             body: "*"
         };
     }
+    // Get drug by names (common names)
+    rpc GetDrugByNames(GetDrugByNamesRequest) returns (GetDrugByNamesResponse) {
+        option (google.api.http) = {
+            post: "/doctorbot/v1/knowledge/drug/bynames"
+            body: "*"
+        };
+    }
 }
