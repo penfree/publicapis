@@ -1,0 +1,39 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.user.v1.member;
+
+import "data.proto";
+
+option go_package = "member";
+
+option java_multiple_files = true;
+option java_outer_classname = "ServiceMessageProto";
+option java_package = "com.iyoudoctor.user.v1.member";
+
+message GetMembersResponse {
+    // The member list
+    repeated Member members = 1;
+}
+
+message CreateMemberRequest {
+    // The member
+    Member member = 1;
+}
+
+message CreateMemberResponse {
+    // The created member id
+    string id = 1;
+}
+
+message UpdateMemberRequest {
+    // The member
+    Member member = 1;
+}
+
+message RemoveMemberRequest {
+    // The member id
+    string id = 1;
+}

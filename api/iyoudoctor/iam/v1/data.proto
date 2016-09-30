@@ -14,29 +14,18 @@ option java_multiple_files = true;
 option java_outer_classname = "DataProto";
 option java_package = "com.iyoudoctor.iam.v1";
 
-// The token type
-enum TokenType {
-    TokenTypeNone = 0;
-    // The access token
-    TokenTypeAccessToken = 1;
-    // The authorization code
-    TokenTypeAuthorizationCode = 2;
-}
-
 // Represent a token
 message Token {
-    // The token type
-    TokenType type = 1;
     // The application id
-    string appID = 2;
+    string appID = 1;
     // The user id
-    string userID = 3;
+    string userID = 2;
     // The authorized time in utc, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
-    google.protobuf.Timestamp utctime = 4;
+    google.protobuf.Timestamp utctime = 3;
     // The expire time in utc, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
-    google.protobuf.Timestamp utcexp = 5;
+    google.protobuf.Timestamp utcexp = 4;
     // The scopes
-    repeated string scopes = 6;
+    repeated string scopes = 5;
 }
 
 // The user

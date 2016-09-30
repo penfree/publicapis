@@ -339,6 +339,18 @@ message RecommendedDrugsAnalyzeResponse {
     // {LANG: en} The drugs
     // {LANG: cn} 药品列表
     repeated RecommendedDrugsAnalyzeItem drugs = 1;
+    // {LANG: en} The search result start from
+    // {LANG: cn} 搜索结果起始
+    int32 start = 12;
+    // {LANG: en} The search result items size
+    // {LANG: cn} 搜索结果数
+    int32 size = 13;
+    // {LANG: en} the requested search result item size
+    // {LANG: cn} 请求的搜索结果数
+    int32 requestedSize = 14;
+    // {LANG: en} The total result size
+    // {LANG: cn} 结果总数
+    int32 totalSize = 15;
 }
 
 // {LANG: en} The response item of recommended drugs

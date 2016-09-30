@@ -15,6 +15,7 @@ python:
 	@$(MAKE) -C $(CurrentDir)/doctorbot python
 	@$(MAKE) -C $(CurrentDir)/oauth2 python
 	@$(MAKE) -C $(CurrentDir)/iam python
+	@$(MAKE) -C $(CurrentDir)/user python
 	@$(MAKE) -C $(CurrentDir)/partner python
 	@#Create the __init__.py
 	touch $(PythonGenPath)/iyoudoctor/__init__.py
@@ -23,5 +24,6 @@ go:
 	@$(MAKE) -C $(CurrentDir)/internals go
 	@$(MAKE) -C $(CurrentDir)/doctorbot go
 	@$(MAKE) -C $(CurrentDir)/oauth2 go
+	@$(MAKE) -C $(CurrentDir)/user go
 	@$(MAKE) -C $(CurrentDir)/iam go
 	@$(MAKE) -C $(CurrentDir)/partner go

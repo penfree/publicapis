@@ -1,0 +1,27 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.user.v1.member;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "member";
+
+option java_multiple_files = true;
+option java_outer_classname = "DataProto";
+option java_package = "com.iyoudoctor.user.v1.member";
+
+message Member {
+    // The id
+    string id = 1;
+    // The name
+    string name = 2;
+    // The comment
+    string comment = 3;
+    // The gender
+    string gender = 4;
+    // Birthday, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
+    google.protobuf.Timestamp birthday = 5;
+}

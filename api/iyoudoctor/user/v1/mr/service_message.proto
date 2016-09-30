@@ -1,0 +1,56 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.user.v1.mr;
+
+import "data.proto";
+
+option go_package = "mr";
+
+option java_multiple_files = true;
+option java_outer_classname = "ServiceMessageProto";
+option java_package = "com.iyoudoctor.user.v1.mr";
+
+message GetMedicalRecordRequest {
+    // The medical record id
+    string id = 1;
+}
+
+message GetMedicalRecordResponse {
+    // The medical record
+    MedicalRecord record = 1;
+}
+
+message GetMedicalRecordsByMemberRequest {
+    // The member id
+    string id = 1;
+    // The start
+    int32 start = 14;
+    // The size
+    int32 size = 15;
+}
+
+message GetMedicalRecordsByMemberResponse {
+    // The mrs
+    repeated MedicalRecord records = 1;
+    // The start
+    int32 start = 12;
+    // The size
+    int32 size = 13;
+    // The requested size
+    int32 requestedSize = 14;
+}
+
+message CreateMedicalRecordRequest {
+    // The mr to create
+    MedicalRecord record = 1;
+    // The member id
+    string memberID = 2;
+}
+
+message CreateMedicalRecordResponse {
+    // The created id
+    string id = 1;
+}
