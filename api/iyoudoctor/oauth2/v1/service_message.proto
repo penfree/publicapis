@@ -7,6 +7,8 @@ syntax = "proto3";
 // NOTE: These apis are designed for internal use only, to use our oauth2 api, please visit our wiki.
 package iyoudoctor.oauth2.v1;
 
+import "error.proto";
+
 option go_package = "oauth2v1";
 
 option java_multiple_files = true;
@@ -99,7 +101,7 @@ enum AuthorizationState {
 // The authorization error
 message AuthorizationError {
     // The error code
-    string code = 1;
+    OAuth2Error code = 1;
     // The error message
     string message = 2;
 }

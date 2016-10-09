@@ -1,0 +1,32 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.oauth2.v1;
+
+option go_package = "oauth2v1";
+
+option java_multiple_files = true;
+option java_outer_classname = "ErrorProto";
+option java_package = "com.iyoudoctor.oauth2.v1";
+
+// NOTE:
+//  The error spec is an internal use error spec, it doesn't follow the oauth2 rfc error spec.
+enum OAuth2Error {
+    InternalError = 0;
+    InvalidRequest = 1;                         // Indicate any of the parameter is invalid
+    InvalidSecret = 2;                          // Indicate the secret is invalid
+    InvalidAuthorizationCode = 3;               // Indicate the authorization code is invalid
+    // User related error
+    InvalidUser = 4;                            // Indicate the user is invalid, either not found or blocked
+    InvalidUserCredential = 5;                  // Indicate the user credential is wrong (e.g. username / password)
+    PasswordChangeRequired = 6;                 // Indicate the user password credential should be initialized at once
+    InvalidSamePassword = 7;                    // Indicate the new password and the old password are the same
+    BadPassword = 8;                            // Indicate the password is bad
+    // Application related error
+    InvalidApplication = 9;                     // Indicate the application is invalid (either not found or blocked)
+    ApplicationNotPermitted = 10;                // Indicate the application is not permitted
+    // Redirect uri related
+    InvalidRedirectUri = 11;                    // Indicate the redirect is invalid
+}
