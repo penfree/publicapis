@@ -16,6 +16,8 @@
 # 	Copyright 2016 北京大数医达科技有限公司
 #
 
+SHELL := /bin/bash
+
 # Get the root work directory
 RootWorkDir := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 # Set the generated scripts path
