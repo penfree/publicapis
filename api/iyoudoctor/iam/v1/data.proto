@@ -28,12 +28,26 @@ message Token {
     repeated string scopes = 5;
 }
 
+// The role of user
+enum UserRole {
+    // {LANG: en}  Common User
+    // {LANG: cn}  普通用户
+    CommonUser = 0;
+    // {LANG: en}  Administrator
+    // {LANG: cn}  管理员
+    Administrator = 1;
+}
+
 // The user
 message User {
     // The user id (Which is app isolated)
     string id = 1;
-    // The user nick name
-    string nickname = 2;
+    // The user name
+    string username = 2;
+    // Role of user
+    map<UserRole, map<string, string>> role = 3;
+    // The personal info of user
+    map<string, string> info = 4;
 }
 
 // The application

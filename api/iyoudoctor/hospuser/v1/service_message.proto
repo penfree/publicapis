@@ -1,0 +1,33 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.hospuser.v1;
+
+import "data.proto";
+import "iyoudoctor/iam/v1/data.proto"
+
+option go_package = "hospuserv1";
+
+option java_multiple_files = true;
+option java_outer_classname = "ServiceMessageProto";
+option java_package = "com.iyoudoctor.hospuser.v1";
+
+message BulkCreateUserRequest {
+    bytes file_content = 1;
+}
+
+message ResetPasswordRequest {
+    // The user id
+    string id = 1;
+    // password of user
+    string password = 2;
+}
+
+message ChangePasswordRequest {
+    // The user id
+    string id = 1;
+    // password of user
+    string password = 2;
+}
