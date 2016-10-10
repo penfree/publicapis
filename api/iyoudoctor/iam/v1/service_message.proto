@@ -58,7 +58,7 @@ message CreateUserResponse {
     // true if create success
     bool success = 1;
     // one message for each failed user, and one message to show how many user is created success
-    repeated string msg;
+    repeated string msg = 2;
 }
 
 message ChangeUserInfoRequest {

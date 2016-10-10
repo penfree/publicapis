@@ -8,9 +8,9 @@ package iyoudoctor.hospuser.v1;
 //import "google/protobuf/empty.proto";
 import "_thirdparty/google/api/annotations.proto";
 
-import "iyoudoctor/iam/v1/service_message.proto";
 
 import "service_message.proto";
+import "google/protobuf/empty.proto";
 
 option go_package = "hospuserv1";
 
@@ -21,12 +21,11 @@ option java_package = "com.iyoudoctor.hospuser.v1";
 
 // The medical record service
 service UserManageService {
-    rpc GetUserList(GetUserListRequest) returns (GetUserListResponse) {}
-    rpc SetUserPassword(SetUserPasswordRequest) returns (google.protobuf.Empty) {}
+//    rpc GetUserList(iyoudoctor.iam.v1.GetUserListRequest) returns (iyoudoctor.iam.v1.GetUserListResponse) {}
     rpc ResetPassword(ResetPasswordRequest) returns (google.protobuf.Empty) {}
     rpc ChangePassword(ChangePasswordRequest) returns (google.protobuf.Empty) {}
-    rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty) {}
-    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
-    rpc ChangeUserInfo(ChangeUserInfoRequest) returns (google.protobuf.Empty) {}
-    rpc BulkCreateUser(BulkCreateUserRequest) returns (CreateUserResponse) {}
+//    rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty) {}
+//    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
+//    rpc ChangeUserInfo(ChangeUserInfoRequest) returns (google.protobuf.Empty) {}
+//    rpc BulkCreateUser(BulkCreateUserRequest) returns (CreateUserResponse) {}
 }

@@ -4,9 +4,8 @@
 syntax = "proto3";
 
 package iyoudoctor.hospuser.v1;
+import "iyoudoctor/iam/v1/data.proto";
 
-import "data.proto";
-import "iyoudoctor/iam/v1/data.proto"
 
 option go_package = "hospuserv1";
 
@@ -31,3 +30,35 @@ message ChangePasswordRequest {
     // password of user
     string password = 2;
 }
+
+message DeleteUserRequest {
+    // The user id
+    string id = 1;
+}
+
+message CreateUserRequest {
+    repeated iyoudoctor.iam.v1.User users = 1;
+}
+
+message CreateUserResponse {
+    // true if create success
+    bool success = 1;
+    // one message for each failed user, and one message to show how many user is created success
+    repeated string msg = 2;
+}
+
+message ChangeUserInfoRequest {
+    // The new User info, id or user name is used to find user
+    iyoudoctor.iam.v1.User user = 1;
+}
+
+message GetUserListRequest {
+    // Search query (username or name), return all user if query is empty
+    string query = 1;
+}
+
+message GetUserListResponse {
+    // The user list
+    repeated iyoudoctor.iam.v1.User users = 1;
+}
+

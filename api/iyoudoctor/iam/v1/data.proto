@@ -29,13 +29,17 @@ message Token {
 }
 
 // The role of user
-enum UserRole {
+enum UserRoleType {
     // {LANG: en}  Common User
     // {LANG: cn}  普通用户
     CommonUser = 0;
     // {LANG: en}  Administrator
     // {LANG: cn}  管理员
     Administrator = 1;
+}
+
+message UserRole {
+    UserRoleType type = 1;
 }
 
 // The user
@@ -45,7 +49,7 @@ message User {
     // The user name
     string username = 2;
     // Role of user
-    map<UserRole, map<string, string>> role = 3;
+    repeated UserRole roles = 3;
     // The personal info of user
     map<string, string> info = 4;
 }
@@ -59,3 +63,4 @@ message Application {
     // The signature public key
     string publicKey = 3;
 }
+
