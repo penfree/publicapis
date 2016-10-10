@@ -35,7 +35,7 @@ service MemberService {
     // Update member
     rpc UpdateMember(UpdateMemberRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            put: "/user/v1/member"
+            put: "/user/v1/member/{member.id}"
             body: "*"
         };
     }
