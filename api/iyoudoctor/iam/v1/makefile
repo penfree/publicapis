@@ -3,6 +3,8 @@
 # 	Copyright 2016 北京大数医达科技有限公司
 #
 
+SHELL := /bin/bash
+
 .PHONY: python go clean
 
 CurrentDir := $(RootWorkDir)/api/iyoudoctor/iam/v1

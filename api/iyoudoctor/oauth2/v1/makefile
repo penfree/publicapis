@@ -6,7 +6,7 @@
 .PHONY: python go clean
 
 CurrentDir := $(RootWorkDir)/api/iyoudoctor/oauth2/v1
-ProtoFiles := service_message.proto service.proto
+ProtoFiles := service_message.proto service.proto error.proto
 
 python: $(ProtoFiles)
 	@# Compile python modules
