@@ -30,12 +30,13 @@ message Token {
 
 // The role of user
 enum UserRoleType {
+    UnknownUserType = 0;
     // {LANG: en}  Common User
     // {LANG: cn}  普通用户
-    CommonUser = 0;
+    CommonUser = 1;
     // {LANG: en}  Administrator
     // {LANG: cn}  管理员
-    Administrator = 1;
+    Administrator = 2;
 }
 
 message UserRole {

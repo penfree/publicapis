@@ -4,8 +4,7 @@
 syntax = "proto3";
 
 package iyoudoctor.hospuser.v1;
-import "iyoudoctor/iam/v1/data.proto";
-
+import "data.proto";
 
 option go_package = "hospuserv1";
 
@@ -37,7 +36,7 @@ message DeleteUserRequest {
 }
 
 message CreateUserRequest {
-    repeated iyoudoctor.iam.v1.User users = 1;
+    HospitalUser user = 1;
 }
 
 message CreateUserResponse {
@@ -48,8 +47,15 @@ message CreateUserResponse {
 }
 
 message ChangeUserInfoRequest {
-    // The new User info, id or user name is used to find user
-    iyoudoctor.iam.v1.User user = 1;
+    HospitalUser user = 1;
+}
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message GetUserResponse {
+    HospitalUser user = 1;
 }
 
 message GetUserListRequest {
@@ -58,7 +64,12 @@ message GetUserListRequest {
 }
 
 message GetUserListResponse {
-    // The user list
-    repeated iyoudoctor.iam.v1.User users = 1;
+    repeated HospitalUser users = 1;
 }
 
+message VerifyPasswordRequest {
+    // the user id
+    string id = 1;
+    // the user password
+    string password = 2;
+}

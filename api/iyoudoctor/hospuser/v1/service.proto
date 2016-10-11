@@ -62,4 +62,16 @@ service UserManageService {
             body: "*"
         };
     }
+    rpc GetUser(GetUserRequest) returns (GetUserResponse){
+        option (google.api.http) = {
+            post: "/hospuser/v1/user"
+            body: "*"
+        };
+    }
+    rpc VerifyPassword(VerifyPasswordRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/hospuser/v1/verify"
+            body: "*"
+        };
+    }
 }

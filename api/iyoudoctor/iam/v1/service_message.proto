@@ -62,8 +62,10 @@ message CreateUserResponse {
 }
 
 message ChangeUserInfoRequest {
-    // The new User info, id or user name is used to find user
-    User user = 1;
+    // The user id
+    string id = 1;
+    // the key and value to change 
+    map<string, string> info = 2;
 }
 
 message GetUserListRequest {
@@ -76,3 +78,31 @@ message GetUserListResponse {
     repeated User users = 1;
 }
 
+message CheckUserRoleRequest {
+    // The user id
+    string id = 1;
+    // The expected user role type
+    UserRoleType role = 2;
+}
+
+message AuthorizeRequest {
+    // the user id
+    string id = 1;
+    // the role to add, existed role which has same role type will be replaced
+    UserRole role = 2;
+    bool replace = 3;
+}
+
+message DeauthorizeRequest {
+    // the user id
+    string id = 1;
+    // remove the role of user
+    UserRoleType role = 2;
+}
+
+message VerifyPasswordRequest {
+    // the user id
+    string id = 1;
+    // the user password
+    string password = 2;
+}

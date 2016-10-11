@@ -26,6 +26,9 @@ service UserService {
     rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {}
     rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
     rpc ChangeUserInfo(ChangeUserInfoRequest) returns (google.protobuf.Empty) {}
+    rpc Authorize(AuthorizeRequest) returns (google.protobuf.Empty) {}
+    rpc Deauthorize(DeauthorizeRequest) returns (google.protobuf.Empty) {}
+    rpc VerifyPassword(VerifyPasswordRequest) returns (google.protobuf.Empty) {}
 }
 
 // The application service

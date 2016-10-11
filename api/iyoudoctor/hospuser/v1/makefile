@@ -8,7 +8,7 @@ SHELL := /bin/bash
 .PHONY: python go clean
 
 CurrentDir := $(RootWorkDir)/api/iyoudoctor/hospuser/v1
-ProtoFiles := service_message.proto service.proto
+ProtoFiles := data.proto service_message.proto service.proto
 
 python: $(ProtoFiles)
 	@# Compile python modules
