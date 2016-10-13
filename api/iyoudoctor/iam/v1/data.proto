@@ -47,6 +47,8 @@ message UserRole {
 message User {
     // The user id (Which is app isolated)
     string id = 1;
+    // The user nick name
+    string nickname = 2;
     // Role of user
     repeated UserRole roles = 3;
     // The personal info of user
