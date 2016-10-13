@@ -47,12 +47,20 @@ message UserRole {
 message User {
     // The user id (Which is app isolated)
     string id = 1;
-    // The user name
-    string username = 2;
     // Role of user
     repeated UserRole roles = 3;
     // The personal info of user
     map<string, string> info = 4;
+    repeated PasswordAccount passwordAccount = 5;
+}
+
+message PasswordAccount {
+    // account id
+    string id = 1;
+    // username
+    string username = 2;
+    // initial password
+    string password = 3;
 }
 
 // The application

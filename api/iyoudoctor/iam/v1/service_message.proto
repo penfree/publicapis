@@ -24,12 +24,8 @@ message GetApplicationByIDResponse {
 }
 
 message GetUserRequest {
-    oneof identifier{
-        // The User id
-        string id = 1;
-        // The user name
-        string username = 2;
-    }
+    // The User id
+    string id = 1;
 }
 
 message GetUserResponse {
@@ -37,12 +33,16 @@ message GetUserResponse {
 }
 
 message SetUserPasswordRequest {
-    // The user id
-    string id = 1;
+    // username of password account
+    string username = 1;
     // password of user
     string password = 2;
     // true if the user need to change after next login
-    bool needChange = 3;
+    bool needChangePassword = 3;
+    // current user id
+    string currUserID = 4;
+    // forbid set other user's password
+    bool forbidSetOtherUser = 5;
 }
 
 message DeleteUserRequest {
@@ -50,15 +50,26 @@ message DeleteUserRequest {
     string id = 1;
 }
 
-message CreateUserRequest {
-    repeated User users = 1;
+message UserPasswordAccount {
+    // a user is created if userID is not specified
+    string userID = 1;
+    // user role
+    repeated UserRole roles = 2;
+    // userInfo for creating user
+    map<string, string> userInfo = 3;
+    // the password account to create
+    PasswordAccount account = 4;
 }
 
-message CreateUserResponse {
-    // true if create success
-    bool success = 1;
+message CreatePasswordAccountRequest {
+    repeated UserPasswordAccount users = 1;
+}
+
+message CreatePasswordAccountResponse {
+    // success created count
+    int32 success = 1;
     // one message for each failed user, and one message to show how many user is created success
-    repeated string msg = 2;
+    repeated string msg = 3;
 }
 
 message ChangeUserInfoRequest {
@@ -69,13 +80,23 @@ message ChangeUserInfoRequest {
 }
 
 message GetUserListRequest {
-    // Search query (username or name), return all user if query is empty
-    string query = 1;
+    int32 start = 1;
+    int32 size = 2;
+}
+
+message GetUserByUsernameRequest {
+    string username = 1;
+}
+
+message GetUserByInfoFieldRequest {
+    string field = 1;
+    string value = 2;
 }
 
 message GetUserListResponse {
     // The user list
     repeated User users = 1;
+    int32 total = 2;
 }
 
 message CheckUserRoleRequest {
@@ -98,11 +119,4 @@ message DeauthorizeRequest {
     string id = 1;
     // remove the role of user
     UserRoleType role = 2;
-}
-
-message VerifyPasswordRequest {
-    // the user id
-    string id = 1;
-    // the user password
-    string password = 2;
 }

@@ -21,6 +21,12 @@ option java_package = "com.iyoudoctor.hospuser.v1";
 
 // The medical record service
 service UserManageService {
+    rpc SearchUser(SearchUserRequest) returns (GetUserListResponse) {
+        option (google.api.http) = {
+            post: "/hospuser/v1/search"
+            body: "*"
+        };
+    }
     rpc GetUserList(GetUserListRequest) returns (GetUserListResponse) {
         option (google.api.http) = {
             post: "/hospuser/v1/getuserlist"
@@ -29,13 +35,13 @@ service UserManageService {
     }
     rpc ResetPassword(ResetPasswordRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            put: "/hospuser/v1/resetpassword/{id}"
+            put: "/hospuser/v1/resetpassword"
             body: "*"
         };
     }
     rpc ChangePassword(ChangePasswordRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            put: "/hospuser/v1/changepassword/{id}"
+            put: "/hospuser/v1/changepassword"
             body: "*"
         };
     }
@@ -50,7 +56,7 @@ service UserManageService {
             body: "*"
         };
     }
-    rpc ChangeUserInfo(ChangeUserInfoRequest) returns (google.protobuf.Empty) {
+    rpc ChangeUserInfo(ChangeUserInfoRequest) returns (GetUserResponse) {
         option (google.api.http) = {
             put: "/hospuser/v1/changeinfo"
             body: "*"
@@ -65,12 +71,6 @@ service UserManageService {
     rpc GetUser(GetUserRequest) returns (GetUserResponse){
         option (google.api.http) = {
             post: "/hospuser/v1/user"
-            body: "*"
-        };
-    }
-    rpc VerifyPassword(VerifyPasswordRequest) returns (google.protobuf.Empty) {
-        option (google.api.http) = {
-            post: "/hospuser/v1/verify"
             body: "*"
         };
     }
