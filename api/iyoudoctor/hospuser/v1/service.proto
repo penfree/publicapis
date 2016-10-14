@@ -5,7 +5,6 @@ syntax = "proto3";
 
 package iyoudoctor.hospuser.v1;
 
-//import "google/protobuf/empty.proto";
 import "_thirdparty/google/api/annotations.proto";
 
 
@@ -19,7 +18,7 @@ option java_multiple_files = true;
 option java_outer_classname = "ServicesProto";
 option java_package = "com.iyoudoctor.hospuser.v1";
 
-// The medical record service
+// The UserManageService
 service UserManageService {
     rpc SearchUser(SearchUserRequest) returns (GetUserListResponse) {
         option (google.api.http) = {
@@ -35,13 +34,13 @@ service UserManageService {
     }
     rpc ResetPassword(ResetPasswordRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            put: "/hospuser/v1/user/{id}/resetpassword"
+            put: "/hospuser/v1/user/{username}/resetpassword"
             body: "*"
         };
     }
     rpc ChangePassword(ChangePasswordRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            put: "/hospuser/v1/user/{id}/changepassword"
+            put: "/hospuser/v1/user/{username}/changepassword"
             body: "*"
         };
     }
@@ -71,7 +70,6 @@ service UserManageService {
     rpc GetUser(GetUserRequest) returns (GetUserResponse){
         option (google.api.http) = {
             get: "/hospuser/v1/user/{id}"
-            body: "*"
         };
     }
 }
