@@ -23,54 +23,54 @@ option java_package = "com.iyoudoctor.hospuser.v1";
 service UserManageService {
     rpc SearchUser(SearchUserRequest) returns (GetUserListResponse) {
         option (google.api.http) = {
-            post: "/hospuser/v1/search"
+            post: "/hospuser/v1/user/search"
             body: "*"
         };
     }
     rpc GetUserList(GetUserListRequest) returns (GetUserListResponse) {
         option (google.api.http) = {
-            post: "/hospuser/v1/getuserlist"
+            post: "/hospuser/v1/user/getuserlist"
             body: "*"
         };
     }
     rpc ResetPassword(ResetPasswordRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            put: "/hospuser/v1/resetpassword"
+            put: "/hospuser/v1/user/{id}/resetpassword"
             body: "*"
         };
     }
     rpc ChangePassword(ChangePasswordRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            put: "/hospuser/v1/changepassword"
+            put: "/hospuser/v1/user/{id}/changepassword"
             body: "*"
         };
     }
     rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            delete: "/hospuser/v1/deluser/{id}"
+            delete: "/hospuser/v1/user/{id}"
         };
     }
     rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
         option (google.api.http) = {
-            put: "/hospuser/v1/create"
+            post: "/hospuser/v1/user"
             body: "*"
         };
     }
     rpc ChangeUserInfo(ChangeUserInfoRequest) returns (GetUserResponse) {
         option (google.api.http) = {
-            put: "/hospuser/v1/changeinfo"
+            put: "/hospuser/v1/user"
             body: "*"
         };
     }
     rpc BulkCreateUser(BulkCreateUserRequest) returns (CreateUserResponse) {
         option (google.api.http) = {
-            post: "/hospuser/v1/bulkcreate"
+            post: "/hospuser/v1/user/bulkcreate"
             body: "*"
         };
     }
     rpc GetUser(GetUserRequest) returns (GetUserResponse){
         option (google.api.http) = {
-            post: "/hospuser/v1/user"
+            get: "/hospuser/v1/user/{id}"
             body: "*"
         };
     }
