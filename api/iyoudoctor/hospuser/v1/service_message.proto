@@ -1,0 +1,73 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.hospuser.v1;
+import "data.proto";
+
+option go_package = "hospuserv1";
+
+option java_multiple_files = true;
+option java_outer_classname = "ServiceMessageProto";
+option java_package = "com.iyoudoctor.hospuser.v1";
+
+message BulkCreateUserRequest {
+    bytes file_content = 1;
+}
+
+message ResetPasswordRequest {
+    // The username
+    string username = 1;
+    // password of user
+    string password = 2;
+}
+
+message ChangePasswordRequest {
+    // The username
+    string username = 1;
+    // password of user
+    string password = 2;
+}
+
+message DeleteUserRequest {
+    // The user id
+    string id = 1;
+}
+
+message CreateUserRequest {
+    HospitalUser user = 1;
+}
+
+message CreateUserResponse {
+    // true if create success
+    int32 success = 1;
+    // one message for each failed user, and one message to show how many user is created success
+    repeated string msg = 2;
+}
+
+message ChangeUserInfoRequest {
+    HospitalUser user = 1;
+}
+
+message GetUserRequest {
+    string id = 1;
+}
+
+message GetUserResponse {
+    HospitalUser user = 1;
+}
+
+message GetUserListRequest {
+    int32 size = 2;
+    int32 start = 3;
+}
+
+message SearchUserRequest {
+    string query = 1;
+}
+
+message GetUserListResponse {
+    int32 total = 1;
+    repeated HospitalUser users = 2;
+}

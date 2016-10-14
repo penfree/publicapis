@@ -22,3 +22,101 @@ message GetApplicationByIDResponse {
     // The application
     Application app = 1;
 }
+
+message GetUserRequest {
+    // The User id
+    string id = 1;
+}
+
+message GetUserResponse {
+    User user = 1;
+}
+
+message SetUserPasswordRequest {
+    // username of password account
+    string username = 1;
+    // password of user
+    string password = 2;
+    // true if the user need to change after next login
+    bool needChangePassword = 3;
+    // current user id
+    string currUserID = 4;
+    // forbid set other user's password
+    bool forbidSetOtherUser = 5;
+}
+
+message DeleteUserRequest {
+    // The user id
+    string id = 1;
+}
+
+message UserPasswordAccount {
+    // a user is created if userID is not specified
+    string userID = 1;
+    // user role
+    repeated UserRole roles = 2;
+    // userInfo for creating user
+    map<string, string> userInfo = 3;
+    // the password account to create
+    PasswordAccount account = 4;
+}
+
+message CreatePasswordAccountRequest {
+    repeated UserPasswordAccount users = 1;
+}
+
+message CreatePasswordAccountResponse {
+    // success created count
+    int32 success = 1;
+    // one message for each failed user, and one message to show how many user is created success
+    repeated string msg = 3;
+}
+
+message ChangeUserInfoRequest {
+    // The user id
+    string id = 1;
+    // the key and value to change 
+    map<string, string> info = 2;
+}
+
+message GetUserListRequest {
+    int32 start = 1;
+    int32 size = 2;
+}
+
+message GetUserByUsernameRequest {
+    string username = 1;
+}
+
+message GetUserByInfoFieldRequest {
+    string field = 1;
+    string value = 2;
+}
+
+message GetUserListResponse {
+    // The user list
+    repeated User users = 1;
+    int32 total = 2;
+}
+
+message CheckUserRoleRequest {
+    // The user id
+    string id = 1;
+    // The expected user role type
+    UserRoleType role = 2;
+}
+
+message AuthorizeRequest {
+    // the user id
+    string id = 1;
+    // the role to add, existed role which has same role type will be replaced
+    UserRole role = 2;
+    bool replace = 3;
+}
+
+message DeauthorizeRequest {
+    // the user id
+    string id = 1;
+    // remove the role of user
+    UserRoleType role = 2;
+}

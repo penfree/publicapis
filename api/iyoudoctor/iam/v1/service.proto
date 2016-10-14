@@ -9,6 +9,7 @@ package iyoudoctor.iam.v1;
 import "_thirdparty/google/api/annotations.proto";
 
 import "service_message.proto";
+import "google/protobuf/empty.proto";
 
 option go_package = "iamv1";
 
@@ -19,7 +20,16 @@ option java_package = "com.iyoudoctor.iam.v1";
 
 // The user service
 service UserService {
-
+    rpc GetUserList(GetUserListRequest) returns (GetUserListResponse) {}
+    rpc GetUserByUsername(GetUserByUsernameRequest) returns (GetUserListResponse) {}
+    rpc GetUserByInfoField(GetUserByInfoFieldRequest) returns (GetUserListResponse) {}
+    rpc SetUserPassword(SetUserPasswordRequest) returns (google.protobuf.Empty) {}
+    rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty) {}
+    rpc CreatePasswordAccount(CreatePasswordAccountRequest) returns (CreatePasswordAccountResponse) {}
+    rpc GetUser(GetUserRequest) returns (GetUserResponse) {}
+    rpc ChangeUserInfo(ChangeUserInfoRequest) returns (GetUserResponse) {}
+    rpc Authorize(AuthorizeRequest) returns (google.protobuf.Empty) {}
+    rpc Deauthorize(DeauthorizeRequest) returns (google.protobuf.Empty) {}
 }
 
 // The application service
