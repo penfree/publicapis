@@ -34,13 +34,13 @@ service UserManageService {
     }
     rpc ResetPassword(ResetPasswordRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            put: "/hospuser/v1/user/{username}/resetpassword"
+            post: "/hospuser/v1/user/resetpassword"
             body: "*"
         };
     }
     rpc ChangePassword(ChangePasswordRequest) returns (google.protobuf.Empty) {
         option (google.api.http) = {
-            put: "/hospuser/v1/user/{username}/changepassword"
+            post: "/hospuser/v1/user/changepassword"
             body: "*"
         };
     }
