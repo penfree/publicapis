@@ -44,4 +44,12 @@ message Application {
     string secret = 2;
     // The signature public key
     string publicKey = 3;
+    // The options
+    ApplicationOptions options = 4;
+}
+
+// The application options
+message ApplicationOptions {
+    // Enable using the secret as the api sign
+    bool enableSecretAPISign = 1;
 }
