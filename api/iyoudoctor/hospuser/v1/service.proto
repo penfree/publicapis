@@ -72,4 +72,9 @@ service UserManageService {
             get: "/hospuser/v1/user/{id}"
         };
     }
+    rpc Who(google.protobuf.Empty) returns (GetUserResponse){
+        option (google.api.http) = {
+            get: "/hospuser/v1/who"
+        };
+    }
 }
