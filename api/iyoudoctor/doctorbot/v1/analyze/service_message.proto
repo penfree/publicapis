@@ -37,6 +37,8 @@ enum UserAnalyzeTarget {
     // {LANG: en} Recommend drugs
     // {LANG: cn} 推荐用药
     UserAnalyzeTargetRecommendedDrugs = 6;
+    // {LANG: en} The best action for current input
+    UserAnalyzeTargetBestAction = 7;
 }
 
 // {LANG: en} The options of more symptoms
@@ -104,6 +106,12 @@ message RecommendedDrugsOptions {
     bool highlight = 4;
 }
 
+// The best action options
+message BestActionOptions {
+    // The action count to return
+    int32 size = 1;
+}
+
 // {LANG: en} The request of user analyze
 // {LANG: cn} 用户分析请求
 message UserAnalyzeRequest {
@@ -119,6 +127,8 @@ message UserAnalyzeRequest {
     // {LANG: en} The user symptoms
     // {LANG: cn} 用户症状列表
     repeated UserSymptom symptoms = 4;
+    // The user vitals
+    repeated UserVital vitals = 8;
     // {LANG: en} The user lab items
     // {LANG: cn} 用户化验项目列表
     repeated UserLabItem labItems = 5;
@@ -151,6 +161,8 @@ message UserAnalyzeOptions {
     // {LANG: en} The recommended drugs options
     // {LANG: cn} 推荐用药选项
     RecommendedDrugsOptions recommendedDrugs = 10;
+    // The best action options
+    BestActionOptions bestActions = 11;
 }
 
 // {LANG: en} The analyze response of more symptoms
@@ -378,6 +390,20 @@ message RecommendedDrugReason {
     repeated string texts = 2;
 }
 
+// The best action respone
+message BestActionResponse {
+    // The actions
+    repeated BestAction actions = 1;
+}
+
+// The best action
+message BestAction {
+    // The action
+    MedicalAction action = 1;
+    // The weight
+    float weight = 2;
+}
+
 // {LANG: en} The response of user analyze
 // {LANG: cn} 用户分析结果
 message UserAnalyzeResponse {
@@ -399,4 +425,7 @@ message UserAnalyzeResponse {
     // {LANG: en} The recommended drugs analyze response
     // {LANG: cn} 推荐用药分析结果
     RecommendedDrugsAnalyzeResponse recommendedDrugs = 10;
+    // The best action response
+    BestActionResponse bestActions = 11;
+
 }
