@@ -63,6 +63,8 @@ message PasswordAccount {
     string username = 2;
     // initial password
     string password = 3;
+    // last login time
+    google.protobuf.Timestamp lastLoginTime = 4;
 }
 
 // The application

@@ -72,4 +72,27 @@ service UserManageService {
             get: "/hospuser/v1/user/{id}"
         };
     }
+    rpc GetDeptList(GetDeptListRequest) returns (GetDeptListResponse){
+        option (google.api.http) = {
+            post: "/hospuser/v1/dept/getdeptlist"
+            body: "*"
+        };
+    }
+    rpc GetHospitalList(google.protobuf.Empty) returns (GetHospitalListResponse){
+        option (google.api.http) = {
+            post: '/hospuser/v1/hospital/gethospitallist'
+            body: "*"
+        };
+    }
+    rpc GetRoleList(google.protobuf.Empty) returns (GetRoleListResponse){
+        option (google.api.http) = {
+            post: '/hospuser/v1/role/rolelist'
+            body: "*"
+        };
+    }
+    rpc Who(google.protobuf.Empty) returns (GetUserResponse){
+        option (google.api.http) = {
+            get: "/hospuser/v1/who"
+        };
+    }
 }
