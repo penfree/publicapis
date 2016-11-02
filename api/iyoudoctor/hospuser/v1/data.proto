@@ -1,0 +1,40 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+// This package implements the identity & access management related interfaces
+package iyoudoctor.hospuser.v1;
+
+import "google/protobuf/timestamp.proto";
+import "iyoudoctor/iam/v1/data.proto";
+
+option go_package = "hospuserv1";
+
+option java_multiple_files = true;
+option java_outer_classname = "DataProto";
+option java_package = "com.iyoudoctor.hospuser.v1";
+
+message HospitalUser {
+    string id = 1;
+    string username = 2;
+    string name = 3;
+    string hospital = 4;
+    string department = 5;
+    //string role = 6;
+    iyoudoctor.iam.v1.UserRoleType role = 6;
+    string lastLoginTime = 7;
+    string roleName = 8;
+}
+
+message HospUserType{
+    string name = 1;
+    iyoudoctor.iam.v1.UserRoleType type = 2;
+}
+
+enum CreateUserStatus {
+    UnknownStatus = 0;
+    CreateUserSuccess = 1;
+    CreateUserPartialFailed = 2;
+    CreateUserFailed = 3;
+}

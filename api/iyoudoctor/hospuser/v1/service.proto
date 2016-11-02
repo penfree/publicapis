@@ -1,0 +1,98 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+package iyoudoctor.hospuser.v1;
+
+import "_thirdparty/google/api/annotations.proto";
+
+
+import "service_message.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "hospuserv1";
+
+option java_generic_services = true;
+option java_multiple_files = true;
+option java_outer_classname = "ServicesProto";
+option java_package = "com.iyoudoctor.hospuser.v1";
+
+// The UserManageService
+service UserManageService {
+    rpc SearchUser(SearchUserRequest) returns (GetUserListResponse) {
+        option (google.api.http) = {
+            post: "/hospuser/v1/user/search"
+            body: "*"
+        };
+    }
+    rpc GetUserList(GetUserListRequest) returns (GetUserListResponse) {
+        option (google.api.http) = {
+            post: "/hospuser/v1/user/getuserlist"
+            body: "*"
+        };
+    }
+    rpc ResetPassword(ResetPasswordRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/hospuser/v1/user/resetpassword"
+            body: "*"
+        };
+    }
+    rpc ChangePassword(ChangePasswordRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            post: "/hospuser/v1/user/changepassword"
+            body: "*"
+        };
+    }
+    rpc DeleteUser(DeleteUserRequest) returns (google.protobuf.Empty) {
+        option (google.api.http) = {
+            delete: "/hospuser/v1/user/{id}"
+        };
+    }
+    rpc CreateUser(CreateUserRequest) returns (CreateUserResponse) {
+        option (google.api.http) = {
+            post: "/hospuser/v1/user"
+            body: "*"
+        };
+    }
+    rpc ChangeUserInfo(ChangeUserInfoRequest) returns (GetUserResponse) {
+        option (google.api.http) = {
+            put: "/hospuser/v1/user"
+            body: "*"
+        };
+    }
+    rpc BulkCreateUser(BulkCreateUserRequest) returns (CreateUserResponse) {
+        option (google.api.http) = {
+            post: "/hospuser/v1/user/bulkcreate"
+            body: "*"
+        };
+    }
+    rpc GetUser(GetUserRequest) returns (GetUserResponse){
+        option (google.api.http) = {
+            get: "/hospuser/v1/user/{id}"
+        };
+    }
+    rpc GetDeptList(GetDeptListRequest) returns (GetDeptListResponse){
+        option (google.api.http) = {
+            post: "/hospuser/v1/dept/getdeptlist"
+            body: "*"
+        };
+    }
+    rpc GetHospitalList(google.protobuf.Empty) returns (GetHospitalListResponse){
+        option (google.api.http) = {
+            post: '/hospuser/v1/hospital/gethospitallist'
+            body: "*"
+        };
+    }
+    rpc GetRoleList(google.protobuf.Empty) returns (GetRoleListResponse){
+        option (google.api.http) = {
+            post: '/hospuser/v1/role/rolelist'
+            body: "*"
+        };
+    }
+    rpc Who(google.protobuf.Empty) returns (GetUserResponse){
+        option (google.api.http) = {
+            get: "/hospuser/v1/who"
+        };
+    }
+}
