@@ -44,6 +44,7 @@ message CreateUserResponse {
     int32 success = 1;
     // one message for each failed user, and one message to show how many user is created success
     repeated string msg = 2;
+    CreateUserStatus status = 3;
 }
 
 message ChangeUserInfoRequest {
@@ -70,4 +71,20 @@ message SearchUserRequest {
 message GetUserListResponse {
     int32 total = 1;
     repeated HospitalUser users = 2;
+}
+
+message GetDeptListRequest {
+    repeated string hospital = 1;
+}
+message GetDeptListResponse {
+    repeated string name = 1;
+}
+
+message GetHospitalListResponse {
+    repeated string name = 1;
+}
+
+
+message GetRoleListResponse {
+    repeated HospUserType type = 1;
 }
