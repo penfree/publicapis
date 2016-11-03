@@ -23,7 +23,7 @@ message HospitalUser {
     string department = 5;
     //string role = 6;
     iyoudoctor.iam.v1.UserRoleType role = 6;
-    string lastLoginTime = 7;
+    google.protobuf.Timestamp lastLoginTime = 7;
     string roleName = 8;
 }
 
