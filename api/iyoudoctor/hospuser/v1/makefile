@@ -10,7 +10,7 @@ SHELL := /bin/bash
 CurrentDir := $(RootWorkDir)/api/iyoudoctor/hospuser/v1
 ProtoFiles := data.proto service_message.proto service.proto
 
-GoCompileFlag := $(GoCompileFlag),Miyoudoctor/iam/v1/data.proto=$(GoRootPackage)/iyoudoctor/iam/v1
+LocalGoCompileFlag := $(GoCompileFlag),Miyoudoctor/iam/v1/data.proto=$(GoRootPackage)/iyoudoctor/iam/v1
 
 python: $(ProtoFiles)
 	@# Compile python modules
@@ -26,9 +26,9 @@ python: $(ProtoFiles)
 
 go: $(ProtoFiles)
 	@# Compile go modules
-	protoc -I . -I $(RootAPIDir) -I $(RootWorkDir)/include -I _thirdparty=$(RootWorkDir)/include --go_out=plugins=grpc,$(GoCompileFlag):. $(ProtoFiles)
+	protoc -I . -I $(RootAPIDir) -I $(RootWorkDir)/include -I _thirdparty=$(RootWorkDir)/include --go_out=plugins=grpc,$(LocalGoCompileFlag):. $(ProtoFiles)
 	@if [ $(GoGateway) == 1 ]; then \
-		protoc -I=. -I $(RootAPIDir) -I $(RootWorkDir)/include -I _thirdparty=$(RootWorkDir)/include --grpc-gateway_out=$(GoCompileFlag),logtostderr=true:. service.proto; \
+		protoc -I=. -I $(RootAPIDir) -I $(RootWorkDir)/include -I _thirdparty=$(RootWorkDir)/include --grpc-gateway_out=$(LocalGoCompileFlag),logtostderr=true:. service.proto; \
 	fi
 	@# Ensure output directory
 	mkdir -p $(GoGenPath)/iyoudoctor/hospuser/v1
