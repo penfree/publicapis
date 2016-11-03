@@ -10,6 +10,8 @@ SHELL := /bin/bash
 CurrentDir := $(RootWorkDir)/api/iyoudoctor/hospuser/v1
 ProtoFiles := data.proto service_message.proto service.proto
 
+GoCompileFlag := $(GoCompileFlag),Miyoudoctor/iam/v1/data.proto=$(GoRootPackage)/iyoudoctor/iam/v1
+
 python: $(ProtoFiles)
 	@# Compile python modules
 	python -m grpc.tools.protoc -I . -I $(RootAPIDir) -I $(RootWorkDir)/include -I _thirdparty=$(RootWorkDir)/include --python_out=. --grpc_python_out=. $(ProtoFiles)
