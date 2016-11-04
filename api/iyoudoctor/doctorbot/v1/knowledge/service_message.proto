@@ -110,6 +110,32 @@ message NameEntitySearchItem {
     }
 }
 
+message GetEntityWikiRequest {
+    // The entity type
+    EntityType type = 1;
+    // The entity name
+    string name = 2;
+}
+message GetEntityWikiResponse {
+    // The wiki
+    Wiki wiki = 1;
+}
+
+message GetEntityWikisRequest {
+    message OneWiki {
+        // The entity type
+        EntityType type = 1;
+        // The entity name
+        string name = 2;
+    }
+    repeated OneWiki wikis = 1;
+}
+
+message GetEntityWikisResponse {
+    // The wikis
+    repeated Wiki wikis = 1;
+}
+
 // {LANG: en} The response of symptom position list
 // {LANG: cn} 症状部位列表结果
 message GetSymptomPositionListResponse {

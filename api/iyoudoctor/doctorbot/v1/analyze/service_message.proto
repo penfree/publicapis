@@ -127,17 +127,17 @@ message UserAnalyzeRequest {
     // {LANG: en} The user symptoms
     // {LANG: cn} 用户症状列表
     repeated UserSymptom symptoms = 4;
-    // The user vitals
-    repeated UserVital vitals = 8;
-    // {LANG: en} The user lab items
-    // {LANG: cn} 用户化验项目列表
-    repeated UserLabItem labItems = 5;
-    // {LANG: en} The user exam items
-    // {LANG: cn} 用户检查项目列表
-    repeated UserExamItem examItems = 6;
+    // The vital sign
+    iyoudoctor.doctorbot.v1.knowledge.VitalSign vitalSign = 5;
     // {LANG: en} The user diseases
     // {LANG: cn} 用户所患疾病
-    repeated UserDisease diseases = 7;
+    repeated UserDisease diseases = 6;
+    // {LANG: en} The user lab items
+    // {LANG: cn} 用户化验项目列表
+    repeated UserLabItem labItems = 7;
+    // {LANG: en} The user exam items
+    // {LANG: cn} 用户检查项目列表
+    repeated UserExamItem examItems = 8;
 }
 
 // {LANG: en} The options of user analyze
@@ -267,12 +267,12 @@ message PredictedDiseasesAnalyzeLabItemEvidence {
 // {LANG: en} The analyze exam item of predicted disease
 // {LANG: cn} 预测疾病的检查项目分析依据
 message PredictedDiseasesAnalyzeExamItemEvidence {
-    // {LANG: en} The exam item
-    // {LANG: cn} 检查项目
-    iyoudoctor.doctorbot.v1.knowledge.ExamItem examItem = 1;
     // {LANG: en} The user exam item observation
     // {LANG: cn} 用户检查观察结果
-    UserExamItemObservation observation = 2;
+    iyoudoctor.doctorbot.v1.knowledge.ExamObservation observation = 1;
+    // {LANG: en} The state
+    // {LANG: cn} 状态
+    string state = 2;
 }
 
 // {LANG: en} The recommended treatment of predicted disease

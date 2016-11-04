@@ -53,6 +53,10 @@ message UserBasicInfo {
     // {LANG: en} Birthday, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
     // {LANG: cn} 出生日期，采用 RFC 3339 格式进行字符串序列化（举例：1972-01-01T10:00:20.021Z）
     google.protobuf.Timestamp birthday = 3;
+    // The height, in cm
+    float height = 4;
+    // The weight, in kg
+    float weight = 5;
 }
 
 message UserAge {
@@ -87,14 +91,6 @@ enum SymptomState {
     SymptomStateNegative = 2;
 }
 
-// The user vital
-message UserVital {
-    // The name
-    string name = 1;
-    // The value (optional)
-    string value = 2;
-}
-
 // {LANG: en} The user lab item
 // {LANG: cn} 用户化验项目
 message UserLabItem {
@@ -121,20 +117,11 @@ message UserExamItem {
     // {LANG: en} The name
     // {LANG: cn} 名称
     string name = 1;
-    // {LANG: en} The observations
-    // {LANG: cn} 检查观察结论
-    repeated UserExamItemObservation observations = 2;
-}
-
-// {LANG: en} The exam item observations
-// {LANG: cn} 检查项目观察结论
-message UserExamItemObservation {
-    // {LANG: en} The name
-    // {LANG: cn} 名称
-    string name = 1;
     // {LANG: en} The state
     // {LANG: cn} 状态
     string state = 2;
+    // The exam name (optional)
+    string exam = 3;
 }
 
 // {LANG: en} The user disease
@@ -186,7 +173,7 @@ message MedicalAction {
     // Ask past disease
     MedicalActionAskPastDisease askPastDisease = 3;
     // Ask vital
-    MedicalActionAskVital askVital = 4;
+    MedicalActionAskVitalSign askVitalSign = 4;
     // Recommend department
     MedicalActionRecommendDepartment recommendDepartment = 5;
     // Ask lab
@@ -204,7 +191,7 @@ message MedicalAction {
 // Ask symptom
 message MedicalActionAskSymptom {
     // The name
-    string name = 1;
+    iyoudoctor.doctorbot.v1.knowledge.Symptom symptom = 1;
 }
 
 // Ask past disease
@@ -213,16 +200,16 @@ message MedicalActionAskPastDisease {
     iyoudoctor.doctorbot.v1.knowledge.Disease disease = 1;
 }
 
-// Ask vital
-message MedicalActionAskVital {
+// Ask vital sign
+message MedicalActionAskVitalSign {
     // The name
     string name = 1;
 }
 
 // Recommend department
 message MedicalActionRecommendDepartment {
-    // The name
-    string name = 1;
+    // The department
+    iyoudoctor.doctorbot.v1.knowledge.Department department = 1;
 }
 
 // Ask lab
@@ -256,4 +243,5 @@ message RecommendDrug {
 
 // Recommend operation
 message MedicalActionRecommendOperation {
+    iyoudoctor.doctorbot.v1.knowledge.Operation operation = 1;
 }
