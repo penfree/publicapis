@@ -131,7 +131,7 @@ message LabItem {
     repeated string choices = 8;
     // {LANG: en} The numeric value normal range
     // {LANG: cn} 数值结果的正常范围
-    LabItemNumericValueNormalRange numericNormalRange = 9;
+    repeated LabItemNumericValueNormalRange numericNormalRanges = 9;
     // {LANG: en} The qualitative value normal range
     // {LANG: cn} 定性结果的正常范围
     LabItemQualitativeValueNormalRange qualitativeNormalRange = 10;
