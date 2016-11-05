@@ -104,6 +104,8 @@ message NameEntitySearchItem {
         // {LANG: en} The exam item
         // {LANG: cn} 检查项目
         ExamItem examItem = 7;
+        // 检查观察结果
+        ExamObservation examObservation = 9;
         // {LANG: en} The drug
         // {LANG: cn} 药品
         Drug drug = 8;
