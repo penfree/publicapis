@@ -112,16 +112,28 @@ message UserLabItem {
 }
 
 // {LANG: en} The user exam item
-// {LANG: cn} 用户检查项目
-message UserExamItem {
+// {LANG: cn} 用户检查观察结果
+message UserExamObservation {
     // {LANG: en} The name
     // {LANG: cn} 名称
     string name = 1;
     // {LANG: en} The state
     // {LANG: cn} 状态
-    string state = 2;
+    ExamObservationState state = 2;
     // The exam name (optional)
     string exam = 3;
+}
+
+enum ExamObservationState {
+    // {LANG: en} Unknown
+    // {LANG: cn} 不确定
+    ExamObservationStateUnknown = 0;
+    // {LANG: en} Positive
+    // {LANG: cn} 存在该症状
+    ExamObservationStatePositive = 1;
+    // {LANG: en} Negative
+    // {LANG: cn} 不存在该症状
+    ExamObservationStateNegative = 2;
 }
 
 // {LANG: en} The user disease
