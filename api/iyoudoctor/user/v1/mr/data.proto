@@ -22,6 +22,11 @@ message MedicalRecord {
     MedicalRecordUser user = 3;
     // The content
     MedicalRecordContent content = 4;
+
+    // The medical type, 0:小病吃药，1：大病问诊
+    string medicalType = 5;
+    // 大病吃药诊疗内容
+    MedicalContentWrapper contentWrapper = 6;
 }
 
 // The medical record user info
@@ -43,3 +48,39 @@ message MedicalRecordContent {
     // The user choose
     bool userChoose = 4;
 }
+
+message MedicalContentWrapper {
+    //vital
+    MedicalInputVital vital = 1;
+}
+
+// The medical input record content
+message MedicalRecordInputContent {
+    // The symptoms
+    repeated string symptoms = 1;
+
+    // The drug size
+    int32 drugSize = 2;
+    // The drugs
+    repeated string drugs = 3;
+    // The user choose
+    bool userChoose = 4;
+}
+
+message MedicalInputVital{
+    // the height
+    int32 height = 1;
+
+    // the weight
+    string weight = 2;
+
+    // the pulse
+    string pulse = 3;
+
+    // the blood pressure
+    string pressure = 4;
+
+
+}
+
+
