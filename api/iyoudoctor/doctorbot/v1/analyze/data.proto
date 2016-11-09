@@ -19,6 +19,7 @@ syntax = "proto3";
 package iyoudoctor.doctorbot.v1.analyze;
 
 import "google/protobuf/timestamp.proto";
+import "iyoudoctor/doctorbot/v1/knowledge/data.proto";
 
 option go_package = "analyze";
 
@@ -52,6 +53,10 @@ message UserBasicInfo {
     // {LANG: en} Birthday, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
     // {LANG: cn} 出生日期，采用 RFC 3339 格式进行字符串序列化（举例：1972-01-01T10:00:20.021Z）
     google.protobuf.Timestamp birthday = 3;
+    // The height, in cm
+    float height = 4;
+    // The weight, in kg
+    float weight = 5;
 }
 
 message UserAge {
@@ -107,25 +112,28 @@ message UserLabItem {
 }
 
 // {LANG: en} The user exam item
-// {LANG: cn} 用户检查项目
-message UserExamItem {
-    // {LANG: en} The name
-    // {LANG: cn} 名称
-    string name = 1;
-    // {LANG: en} The observations
-    // {LANG: cn} 检查观察结论
-    repeated UserExamItemObservation observations = 2;
-}
-
-// {LANG: en} The exam item observations
-// {LANG: cn} 检查项目观察结论
-message UserExamItemObservation {
+// {LANG: cn} 用户检查观察结果
+message UserExamObservation {
     // {LANG: en} The name
     // {LANG: cn} 名称
     string name = 1;
     // {LANG: en} The state
     // {LANG: cn} 状态
-    string state = 2;
+    ExamObservationState state = 2;
+    // The exam name (optional)
+    string exam = 3;
+}
+
+enum ExamObservationState {
+    // {LANG: en} Unknown
+    // {LANG: cn} 不确定
+    ExamObservationStateUnknown = 0;
+    // {LANG: en} Positive
+    // {LANG: cn} 存在该症状
+    ExamObservationStatePositive = 1;
+    // {LANG: en} Negative
+    // {LANG: cn} 不存在该症状
+    ExamObservationStateNegative = 2;
 }
 
 // {LANG: en} The user disease
@@ -143,4 +151,109 @@ message UserDisease {
         // {LANG: cn} 疾病的名称
         string name = 2;
     }
+}
+
+enum MedicalActionType {
+    // No action
+    MedicalActionTypeNone = 0;
+    // Ask symptom
+    MedicalActionTypeAskSymptom = 1;
+    // Ask past disease
+    MedicalActionTypeAskPastDisease = 2;
+    // Ask vital
+    MedicalActionTypeAskVital = 3;
+    // Recommend department
+    MedicalActionTypeRecommendDepartment = 4;
+    // Ask lab
+    MedicalActionTypeAskLab = 5;
+    // Ask exam
+    MedicalActionTypeAskExam = 6;
+    // Diagnose
+    MedicalActionTypeDiagnose = 7;
+    // Recommend drug
+    MedicalActionTypeRecommendDrug = 8;
+    // Recommend operation
+    MedicalActionTypeRecommendOperation = 9;
+}
+
+// The best action
+message MedicalAction {
+    // The action type
+    MedicalActionType type = 1;
+    // Ask symptom
+    MedicalActionAskSymptom askSymptom = 2;
+    // Ask past disease
+    MedicalActionAskPastDisease askPastDisease = 3;
+    // Ask vital
+    MedicalActionAskVitalSign askVitalSign = 4;
+    // Recommend department
+    MedicalActionRecommendDepartment recommendDepartment = 5;
+    // Ask lab
+    MedicalActionAskLab askLab = 6;
+    // Ask exam
+    MedicalActionAskExam askExam = 7;
+    // Diagnose
+    MedicalActionDiagnose diagnose = 8;
+    // Recommend drug
+    MedicalActionRecommendDrug recommendDrug = 9;
+    // Recommend operation
+    MedicalActionRecommendOperation recommendOperation = 10;
+}
+
+// Ask symptom
+message MedicalActionAskSymptom {
+    // The name
+    iyoudoctor.doctorbot.v1.knowledge.Symptom symptom = 1;
+}
+
+// Ask past disease
+message MedicalActionAskPastDisease {
+    // The disease
+    iyoudoctor.doctorbot.v1.knowledge.Disease disease = 1;
+}
+
+// Ask vital sign
+message MedicalActionAskVitalSign {
+    // The name
+    string name = 1;
+}
+
+// Recommend department
+message MedicalActionRecommendDepartment {
+    // The department
+    iyoudoctor.doctorbot.v1.knowledge.Department department = 1;
+}
+
+// Ask lab
+message MedicalActionAskLab {
+    // The lab item
+    iyoudoctor.doctorbot.v1.knowledge.LabItem labItem = 1;
+}
+
+// Ask exam
+message MedicalActionAskExam {
+    // The exam item
+    iyoudoctor.doctorbot.v1.knowledge.ExamItem examItem = 1;
+}
+
+// Diagnose
+message MedicalActionDiagnose {
+    // The disease
+    iyoudoctor.doctorbot.v1.knowledge.Disease disease = 1;
+}
+
+// Recommend drug
+message MedicalActionRecommendDrug {
+    // The recommend drugs
+    repeated RecommendDrug drugs = 1;
+}
+
+message RecommendDrug {
+    // The drug
+    iyoudoctor.doctorbot.v1.knowledge.Drug drug = 1;
+}
+
+// Recommend operation
+message MedicalActionRecommendOperation {
+    iyoudoctor.doctorbot.v1.knowledge.Operation operation = 1;
 }
