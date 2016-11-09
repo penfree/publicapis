@@ -9,12 +9,12 @@ CurrentDir := $(RootWorkDir)/api/iyoudoctor/user/v1
 
 python:
 	@# Ensure the directory
-	mkdir -p $(PythonGenPath)/iyoudoctor/user/v1/member
+	mkdir -p $(PythonGenPath)/iyoudoctor/user/v1
 	@# Run sub modules
 	@$(MAKE) -C $(CurrentDir)/member python
 	@$(MAKE) -C $(CurrentDir)/mr python
 	@#Create the __init__.py
-	touch $(PythonGenPath)/iyoudoctor/user/v1/member/__init__.py
+	touch $(PythonGenPath)/iyoudoctor/user/v1/__init__.py
 
 go:
 	@$(MAKE) -C $(CurrentDir)/member go
