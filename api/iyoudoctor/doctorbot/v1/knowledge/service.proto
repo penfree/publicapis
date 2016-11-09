@@ -103,4 +103,11 @@ service KnowledgeService {
             body: "*"
         };
     }
+    // Get related entity
+    rpc GetRelatedEntity(GetRelatedEntityRequest) returns (GetRelatedEntityResponse){
+        option (google.api.http) = {
+            post: "/doctorbot/v1/knowledge/relatedentity"
+            body: "*"
+        };
+    }
 }

@@ -334,3 +334,102 @@ message GetDrugByNamesRequest {
 message GetDrugByNamesResponse {
     repeated Drug drugs = 1;
 }
+
+// {LANG: en} Symptoms related to current entity
+// {LANG: cn} 关联的症状实体
+message RelatedSymptomItem {
+    // {LANG: en} The symptom
+    // {LANG: cn} 症状
+    iyoudoctor.doctorbot.v1.knowledge.Symptom symptom = 1;
+    // {LANG: en} The weight, fall in range [0.0, 1.0]
+    // {LANG: cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+}
+
+// {LANG: en} Diseases realated to current entity
+// {LANG: cn} 关联的疾病实体
+message RelatedDiseaseItem {
+    // {LANG: en} The disease
+    // {LANG: cn} 疾病
+    iyoudoctor.doctorbot.v1.knowledge.Disease disease = 1;
+    // {LANG: en} The weight, fall in range [0.0, 1.0]
+    // {LANG: cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+}
+
+
+// {LANG: en} Lab items related to requested entity
+// {LANG: cn} 关联的化验项目
+message RelatedLabItem {
+    // {LANG: en} The lab item
+    // {LANG: cn} 化验项目
+    iyoudoctor.doctorbot.v1.knowledge.LabItem labItem = 1;
+    // {LANG: en} The weight, fall in range [0.0, 1.0]
+    // {LANG: cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+}
+
+// {LANG: en} Exam items related to requested entity
+// {LANG: cn} 关联的检查项目
+message RelatedExamItem {
+    // {LANG: en} The exam item
+    // {LANG: cn} 检查项目
+    iyoudoctor.doctorbot.v1.knowledge.ExamItem examItem = 1;
+    // {LANG: en} The weight, fall in range [0.0, 1.0]
+    // {LANG: cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+}
+
+// {LANG: en} Drugs related to requested entity
+// {LANG: cn} 关联的药品
+message RelatedDrugItem {
+    // {LANG: en} The drug
+    // {LANG: cn} 药品
+    iyoudoctor.doctorbot.v1.knowledge.Drug drug = 1;
+    // {LANG: en} The weight, fall in range [0.0, 1.0]
+    // {LANG: cn} 权重，取值范围[0.0, 1.0]
+    float weight = 2;
+}
+
+message GetRelatedEntityOption {
+    repeated EntityType requestTypes = 1;
+}
+
+message GetRelatedEntityRequest {
+    // {LANG: en} The unique name of this search item (for the specific entity scope)
+    // {LANG: cn} 实体的唯一名称
+    string name = 1;
+    // {LANG: en} The type of this search item
+    // {LANG: cn} 实体类型
+    EntityType type = 2;
+    // {LANG: en} The union value
+    // {LANG: cn} 结果
+    oneof value {
+        // {LANG: en} The symptom
+        // {LANG: cn} 症状
+        Symptom symptom = 4;
+        // {LANG: en} The disease
+        // {LANG: cn} 疾病
+        Disease disease = 5;
+        // {LANG: en} The lab item
+        // {LANG: cn} 化验项目
+        LabItem labItem = 6;
+        // {LANG: en} The exam item
+        // {LANG: cn} 检查项目
+        ExamItem examItem = 7;
+        // {LANG: en} The drug
+        // {LANG: cn} 药品
+        Drug drug = 8;
+    }
+    GetRelatedEntityOption option = 9;
+    int32 size = 10;
+}
+
+message GetRelatedEntityResponse {
+    repeated RelatedSymptomItem symptoms = 1;
+    repeated RelatedLabItem labItems = 2;
+    repeated RelatedExamItem examItems = 3;
+    repeated RelatedDrugItem drugs = 4;
+    repeated RelatedDiseaseItem diseases = 5;
+    int32 size = 6;
+}
