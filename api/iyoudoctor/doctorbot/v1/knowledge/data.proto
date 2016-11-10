@@ -296,3 +296,7 @@ message WikiSection {
     // The value
     google.protobuf.Any value = 2;
 }
+
+message WikiText {
+    string text = 1;
+}
