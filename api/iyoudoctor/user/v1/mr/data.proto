@@ -23,10 +23,10 @@ message MedicalRecord {
     // The content
     MedicalRecordContent content = 4;
 
-    // The medical type, 0:小病吃药，1：大病问诊
+    // The medical type XBCY:小病吃药，DBWZ：大病问诊
     string medicalType = 5;
-    // 大病吃药诊疗内容
-    MedicalContentWrapper contentWrapper = 6;
+    // 大病问诊记录内容
+    InterrogationRecord interrogationRecord = 6;
 }
 
 // The medical record user info
@@ -49,38 +49,80 @@ message MedicalRecordContent {
     bool userChoose = 4;
 }
 
-message MedicalContentWrapper {
-    //vital
-    MedicalInputVital vital = 1;
+message InterrogationRecord {
+    // The medical input description
+    MedicalInputContent inputContent = 1;
+    // The medical guide content
+    MedicalGuideContent guideContent = 2;
 }
 
 // The medical input record content
-message MedicalRecordInputContent {
+message MedicalInputContent {
+    // vital
+    Vital vital = 1;
     // The symptoms
-    repeated string symptoms = 1;
-
-    // The drug size
-    int32 drugSize = 2;
-    // The drugs
-    repeated string drugs = 3;
-    // The user choose
-    bool userChoose = 4;
+    repeated string symptoms = 2;
+    // Lab items
+    repeated LabItem labItems = 3;
+    // exam items
+    repeated ExamItem examItems = 4;
 }
 
-message MedicalInputVital{
+// The medical input record content
+message MedicalGuideContent {
+    // disease items
+    repeated DiseaseItem diseaseItems = 1;
+    // the required lab items
+    repeated LabItem requiredLabItems = 2;
+    // the required exam items
+    repeated ExamItem requiredExamItems = 3;
+    // The surgeries
+    repeated string surgeries = 4;
+    // The drugs
+    repeated string drugs = 5;
+}
+
+
+// The body vital 
+message Vital {
     // the height
     int32 height = 1;
-
     // the weight
-    string weight = 2;
-
+    double weight = 2;
     // the pulse
-    string pulse = 3;
+    int32 pulse = 3;
+    // the temperature
+    double temperature = 4;
+    // the diastolic blood pressure
+    int32 diastolicPressure = 5;  
+    // the systolic blood pressure
+    int32 systolicPressure = 6;
+}
 
-    // the blood pressure
-    string pressure = 4;
+// The medical lab item
+message LabItem{
+    // the name
+    string name = 1;
+    // the specimen
+    string specimen = 2;
+    // the labitem result
+    string result = 3;
+}
 
+// The medical exam item
+message ExamItem{
+    // the name
+    string name = 1;
+    // the exam result
+    string result = 2;
+}
 
+// The disease item
+message DiseaseItem{
+    // the name
+    string name = 1;
+    // the disease probability
+    double weight = 2;
 }
 
 
