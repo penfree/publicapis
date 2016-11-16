@@ -294,5 +294,5 @@ message WikiSection {
     // The key
     string key = 1;
     // The value
-    google.protobuf.Any value = 2;
+    string value = 2;
 }
