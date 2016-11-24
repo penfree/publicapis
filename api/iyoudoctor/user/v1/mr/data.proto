@@ -109,6 +109,8 @@ message LabItem{
     string specimen = 3;
     // the labitem result
     string result = 4;
+    // the weight
+    double weight = 14;
 }
 
 // The medical exam item
