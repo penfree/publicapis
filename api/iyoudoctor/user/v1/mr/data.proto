@@ -103,10 +103,12 @@ message Vital {
 message LabItem{
     // the name
     string name = 1;
+    // the item name
+    string itemName = 2;
     // the specimen
-    string specimen = 2;
+    string specimen = 3;
     // the labitem result
-    string result = 3;
+    string result = 4;
 }
 
 // The medical exam item
