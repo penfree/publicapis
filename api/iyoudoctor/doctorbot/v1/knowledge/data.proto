@@ -296,3 +296,14 @@ message WikiSection {
     // The value
     string value = 2;
 }
+
+// {LANG: en} The type of flags
+// {LANG: cn} Flag 类型
+enum FlagType {
+    // {LANG: en} The all data
+    // {LANG: cn} 全部数据
+    All = 0;
+    // {LANG: en} The online data
+    // {LANG: cn} 已上线数据
+    Online = 1;
+}

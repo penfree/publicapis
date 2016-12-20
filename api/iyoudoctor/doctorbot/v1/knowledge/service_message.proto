@@ -44,8 +44,8 @@ message NameEntitySearchOptions {
     NameEntitySearchDrugOptions drug = 5;
 
     // {LANG: en} The flag options
-    // {LANG: cn} 有效显示过滤选项, 例如["online"]表示已经上线的功能列表,默认或者["all"]表示没有过滤，返回全部信息
-    repeated string flags = 10;
+    // {LANG: cn} 有效显示过滤选项, 例如["Online"]表示已经上线的功能列表,默认或者["All"]表示没有过滤，返回全部信息
+    repeated FlagType flags = 10;
 }
 
 // {LANG: en} The symptom options of name entity search
@@ -147,7 +147,7 @@ message GetEntityWikisResponse {
 message GetSymptomPositionListRequest {
     // {LANG: en} The flag options
     // {LANG: cn} 有效显示过滤选项
-    repeated string flags = 10;
+    repeated FlagType flags = 10;
 }
 
 // {LANG: en} The response of symptom position list
@@ -173,7 +173,7 @@ message SymptomSearchRequest {
 
     // {LANG: en} The flag options
     // {LANG: cn} 有效显示过滤选项
-    repeated string flags = 10;
+    repeated FlagType flags = 10;
 
     // {LANG: en} The returned result item start from, 0 by default
     // {LANG: cn} 返回的结果起始，默认是0
@@ -222,7 +222,7 @@ message DiseaseSearchRequest {
     repeated string categories = 2;
     // {LANG: en} The flag options
     // {LANG: cn} 有效显示过滤选项
-    repeated string flags = 10;
+    repeated FlagType flags = 10;
     // {LANG: en} The returned result item start from, 0 by default
     // {LANG: cn} 返回的结果起始，默认是0
     int32 start = 14;
@@ -256,7 +256,7 @@ message DiseaseSearchResponse {
 message GetLabItemCategoryListRequest {
     // {LANG: en} The flag options
     // {LANG: cn} 有效显示过滤选项
-    repeated string flags = 10;
+    repeated FlagType flags = 10;
 }
 
 // {LANG: en} The response of lab item category list
@@ -278,7 +278,7 @@ message LabItemSearchRequest {
     repeated string categories = 2;
     // {LANG: en} The flag options
     // {LANG: cn} 有效显示过滤选项
-    repeated string flags = 10;
+    repeated FlagType flags = 10;
     // {LANG: en} The returned result item start from, 0 by default
     // {LANG: cn} 返回的结果起始，默认是0
     int32 start = 14;
@@ -312,7 +312,7 @@ message LabItemSearchResponse {
 message GetExamItemCategoryListRequest {
     // {LANG: en} The flag options
     // {LANG: cn} 有效显示过滤选项
-    repeated string flags = 10;
+    repeated FlagType flags = 10;
 }
 
 // {LANG: en} The response of exam item category list
@@ -334,7 +334,7 @@ message ExamItemSearchRequest {
     repeated string categories = 2;
     // {LANG: en} The flag options
     // {LANG: cn} 有效显示过滤选项
-    repeated string flags = 10;
+    repeated FlagType flags = 10;
     // {LANG: en} The returned result item start from, 0 by default
     // {LANG: cn} 返回的结果起始，默认是0
     int32 start = 14;
@@ -371,7 +371,7 @@ message DrugSearchRequest {
     repeated string names = 1;
     // {LANG: en} The flag options
     // {LANG: cn} 有效显示过滤选项
-    repeated string flags = 10;
+    repeated FlagType flags = 10;
     // {LANG: en} The returned result item start from, 0 by default
     // {LANG: cn} 返回的结果起始，默认是0
     int32 start = 14;
