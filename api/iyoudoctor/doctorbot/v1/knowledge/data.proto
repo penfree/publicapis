@@ -56,6 +56,17 @@ enum SymptomType {
     SymptomTypeSign = 2;
 }
 
+// {LANG: en} The type of flags
+// {LANG: cn} Flag 类型
+enum FlagType {
+    // {LANG: en} The all data
+    // {LANG: cn} 全部数据
+    AllFlag = 0;
+    // {LANG: en} The online data
+    // {LANG: cn} 已上线数据
+    OnlineFlag = 1;
+}
+
 // {LANG: en} The symptom entity definition
 // {LANG: cn} 症状实体定义，定义了描述一个症状的全部信息
 message Symptom {
@@ -297,13 +308,4 @@ message WikiSection {
     string value = 2;
 }
 
-// {LANG: en} The type of flags
-// {LANG: cn} Flag 类型
-enum FlagType {
-    // {LANG: en} The all data
-    // {LANG: cn} 全部数据
-    All = 0;
-    // {LANG: en} The online data
-    // {LANG: cn} 已上线数据
-    Online = 1;
-}
+
