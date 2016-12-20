@@ -44,7 +44,7 @@ service KnowledgeService {
     }
     // {LANG: en} Get all symptom positions
     // {LANG: cn} 获得所有症状部位列表
-    rpc GetSymptomPositionList(google.protobuf.Empty) returns (GetSymptomPositionListResponse) {
+    rpc GetSymptomPositionList(GetSymptomPositionListRequest) returns (GetSymptomPositionListResponse) {
         option (google.api.http) = {
             get: "/doctorbot/v1/knowledge/symptom/position"
         };
@@ -74,7 +74,7 @@ service KnowledgeService {
     }
     // {LANG: en} Get all lab item categories
     // {LANG: cn} 获得化验项目分类列表
-    rpc GetLabItemCategoryList(google.protobuf.Empty) returns (GetLabItemCategoryListResponse) {
+    rpc GetLabItemCategoryList(GetLabItemCategoryListRequest) returns (GetLabItemCategoryListResponse) {
         option (google.api.http) = {
             get: "/doctorbot/v1/knowledge/labitem/category"
         };
@@ -89,11 +89,12 @@ service KnowledgeService {
     }
     // {LANG: en} Get all exam item categories
     // {LANG: cn} 获得检查项目分类列表
-    rpc GetExamItemCategoryList(google.protobuf.Empty) returns (GetExamItemCategoryListResponse) {
+    rpc GetExamItemCategoryList(GetExamItemCategoryListRequest) returns (GetExamItemCategoryListResponse) {
         option (google.api.http) = {
             get: "/doctorbot/v1/knowledge/examitem/category"
         };
     }
+
     // {LANG: en} Do exam item search
     // {LANG: cn} 搜索检查项目
     rpc ExamItemSearch(ExamItemSearchRequest) returns (ExamItemSearchResponse) {
