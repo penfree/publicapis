@@ -28,6 +28,20 @@ service KnowledgeService {
             body: "*"
         };
     }
+    // 根据实体类型和名字获得wiki
+    rpc GetEntityWiki(GetEntityWikiRequest) returns (GetEntityWikiResponse) {
+        option (google.api.http) = {
+            post: "/doctorbot/v1/knowledge/wiki"
+            body: "*"
+        };
+    }
+    // 根据实体类型和名字批量获得wiki
+    rpc GetEntityWikis(GetEntityWikisRequest) returns (GetEntityWikisResponse) {
+        option (google.api.http) = {
+            post: "/doctorbot/v1/knowledge/wikis"
+            body: "*"
+        };
+    }
     // {LANG: en} Get all symptom positions
     // {LANG: cn} 获得所有症状部位列表
     rpc GetSymptomPositionList(google.protobuf.Empty) returns (GetSymptomPositionListResponse) {

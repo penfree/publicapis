@@ -104,10 +104,38 @@ message NameEntitySearchItem {
         // {LANG: en} The exam item
         // {LANG: cn} 检查项目
         ExamItem examItem = 7;
+        // 检查观察结果
+        ExamObservation examObservation = 9;
         // {LANG: en} The drug
         // {LANG: cn} 药品
         Drug drug = 8;
     }
+}
+
+message GetEntityWikiRequest {
+    // The entity type
+    EntityType type = 1;
+    // The entity name
+    string name = 2;
+}
+message GetEntityWikiResponse {
+    // The wiki
+    Wiki wiki = 1;
+}
+
+message GetEntityWikisRequest {
+    message OneWiki {
+        // The entity type
+        EntityType type = 1;
+        // The entity name
+        string name = 2;
+    }
+    repeated OneWiki wikis = 1;
+}
+
+message GetEntityWikisResponse {
+    // The wikis
+    repeated Wiki wikis = 1;
 }
 
 // {LANG: en} The response of symptom position list
