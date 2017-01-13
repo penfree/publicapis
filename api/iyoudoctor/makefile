@@ -18,7 +18,6 @@ python:
 	@$(MAKE) -C $(CurrentDir)/user python
 	@$(MAKE) -C $(CurrentDir)/partner python
 	@$(MAKE) -C $(CurrentDir)/hospuser python
-	@$(MAKE) -C $(CurrentDir)/medgraph python
 	@#Create the __init__.py
 	touch $(PythonGenPath)/iyoudoctor/__init__.py
 
@@ -30,4 +29,3 @@ go:
 	@$(MAKE) -C $(CurrentDir)/iam go
 	@$(MAKE) -C $(CurrentDir)/partner go
 	@$(MAKE) -C $(CurrentDir)/hospuser go
-	@$(MAKE) -C $(CurrentDir)/medgraph go
