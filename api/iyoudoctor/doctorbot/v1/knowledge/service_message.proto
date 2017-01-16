@@ -46,6 +46,10 @@ message NameEntitySearchOptions {
     // {LANG: en} The flag options
     // {LANG: cn} 有效显示过滤选项
     repeated string flags = 10;
+
+    // {LANG: en} The display options
+    // {LANG: cn} 显示名字选项，可以指定friendlyName或者name，默认为name
+    string displayName= 11;
 }
 
 // {LANG: en} The symptom options of name entity search
@@ -174,6 +178,10 @@ message SymptomSearchRequest {
     // {LANG: en} The flag options
     // {LANG: cn} 有效显示过滤选项
     repeated string flags = 10;
+
+    // {LANG: en} The display options
+    // {LANG: cn} 显示名字选项，可以指定friendlyName或者name，默认为name
+    string displayName= 11;
 
     // {LANG: en} The returned result item start from, 0 by default
     // {LANG: cn} 返回的结果起始，默认是0
