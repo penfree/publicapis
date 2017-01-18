@@ -282,8 +282,11 @@ message LabItemSearchRequest {
     // {LANG: cn} 搜索的名称（多个名称之间或关系）
     repeated string names = 1;
     // {LANG: en} The categories (Use logic or for categories)
-    // {LANG: cn} 搜索的分类（多个分类之间或关系）
+    // {LANG: cn} 搜索的分类（多个分类之间或关系，按套餐分类）
     repeated string categories = 2;
+    // {LANG: en} The specimen 
+    // {LANG: cn} 根据specimen搜索
+    repeated string specimens = 3;
     // {LANG: en} The flag options
     // {LANG: cn} 有效显示过滤选项
     repeated string flags = 10;
