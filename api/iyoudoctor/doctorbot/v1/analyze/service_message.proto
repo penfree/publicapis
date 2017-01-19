@@ -441,5 +441,5 @@ message UserAnalyzeResponse {
     // The best action response
     BestActionResponse bestActions = 11;
     // Text parse response
-    ParseTextResponse parseText = 12;
+    ParseTextResponse parseTexts = 12;
 }
