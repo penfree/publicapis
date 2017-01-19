@@ -42,6 +42,14 @@ message NameEntitySearchOptions {
     // {LANG: en} The drug options
     // {LANG: cn} 药品搜索选项
     NameEntitySearchDrugOptions drug = 5;
+
+    // {LANG: en} The flag options
+    // {LANG: cn} 有效显示过滤选项
+    repeated string flags = 10;
+
+    // {LANG: en} The display options
+    // {LANG: cn} 显示名字选项，可以指定friendlyName或者name，默认为name
+    string displayName= 11;
 }
 
 // {LANG: en} The symptom options of name entity search
@@ -138,6 +146,14 @@ message GetEntityWikisResponse {
     repeated Wiki wikis = 1;
 }
 
+// {LANG: en} The request of getting symptom position list
+// {LANG: cn} 获取症状部位列表请求
+message GetSymptomPositionListRequest {
+    // {LANG: en} The flag options
+    // {LANG: cn} 有效显示过滤选项
+    repeated string flags = 10;
+}
+
 // {LANG: en} The response of symptom position list
 // {LANG: cn} 症状部位列表结果
 message GetSymptomPositionListResponse {
@@ -158,6 +174,15 @@ message SymptomSearchRequest {
     // {LANG: en} The types (Use logic or for types)
     // {LANG: cn} 搜索的类型（多个类型之间或关系）
     repeated SymptomType types = 3;
+
+    // {LANG: en} The flag options
+    // {LANG: cn} 有效显示过滤选项
+    repeated string flags = 10;
+
+    // {LANG: en} The display options
+    // {LANG: cn} 显示名字选项，可以指定friendlyName或者name，默认为name
+    string displayName= 11;
+
     // {LANG: en} The returned result item start from, 0 by default
     // {LANG: cn} 返回的结果起始，默认是0
     int32 start = 14;
@@ -203,6 +228,9 @@ message DiseaseSearchRequest {
     // {LANG: en} The categories (Use logic or for categories)
     // {LANG: cn} 搜索的分类（多个分类之间或关系）
     repeated string categories = 2;
+    // {LANG: en} The flag options
+    // {LANG: cn} 有效显示过滤选项
+    repeated string flags = 10;
     // {LANG: en} The returned result item start from, 0 by default
     // {LANG: cn} 返回的结果起始，默认是0
     int32 start = 14;
@@ -231,6 +259,14 @@ message DiseaseSearchResponse {
     int32 totalSize = 15;
 }
 
+// {LANG: en} The request of lab item category list
+// {LANG: cn} 化验项目分类列表请求
+message GetLabItemCategoryListRequest {
+    // {LANG: en} The flag options
+    // {LANG: cn} 有效显示过滤选项
+    repeated string flags = 10;
+}
+
 // {LANG: en} The response of lab item category list
 // {LANG: cn} 化验项目分类列表结果
 message GetLabItemCategoryListResponse {
@@ -246,8 +282,14 @@ message LabItemSearchRequest {
     // {LANG: cn} 搜索的名称（多个名称之间或关系）
     repeated string names = 1;
     // {LANG: en} The categories (Use logic or for categories)
-    // {LANG: cn} 搜索的分类（多个分类之间或关系）
+    // {LANG: cn} 搜索的分类（多个分类之间或关系，按套餐分类）
     repeated string categories = 2;
+    // {LANG: en} The specimen 
+    // {LANG: cn} 根据specimen搜索
+    repeated string specimens = 3;
+    // {LANG: en} The flag options
+    // {LANG: cn} 有效显示过滤选项
+    repeated string flags = 10;
     // {LANG: en} The returned result item start from, 0 by default
     // {LANG: cn} 返回的结果起始，默认是0
     int32 start = 14;
@@ -276,6 +318,14 @@ message LabItemSearchResponse {
     int32 totalSize = 15;
 }
 
+// {LANG: en} The request of lab exam category list
+// {LANG: cn} 检查项目分类列表请求
+message GetExamItemCategoryListRequest {
+    // {LANG: en} The flag options
+    // {LANG: cn} 有效显示过滤选项
+    repeated string flags = 10;
+}
+
 // {LANG: en} The response of exam item category list
 // {LANG: cn} 检查项目分类列表结果
 message GetExamItemCategoryListResponse {
@@ -293,6 +343,9 @@ message ExamItemSearchRequest {
     // {LANG: en} The categories (Use logic or for categories)
     // {LANG: cn} 搜索的分类（多个分类之间或关系）
     repeated string categories = 2;
+    // {LANG: en} The flag options
+    // {LANG: cn} 有效显示过滤选项
+    repeated string flags = 10;
     // {LANG: en} The returned result item start from, 0 by default
     // {LANG: cn} 返回的结果起始，默认是0
     int32 start = 14;
@@ -327,6 +380,9 @@ message DrugSearchRequest {
     // {LANG: en} The names (Use logic or for names)
     // {LANG: cn} 搜索的名称（多个名称之间或关系）
     repeated string names = 1;
+    // {LANG: en} The flag options
+    // {LANG: cn} 有效显示过滤选项
+    repeated string flags = 10;
     // {LANG: en} The returned result item start from, 0 by default
     // {LANG: cn} 返回的结果起始，默认是0
     int32 start = 14;
