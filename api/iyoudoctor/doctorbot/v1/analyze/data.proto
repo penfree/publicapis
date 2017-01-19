@@ -153,6 +153,30 @@ message UserDisease {
     }
 }
 
+message Text {
+    // The type of the text
+    string type = 1;
+    // The language of the text
+    string language = 2;
+    // The text
+    string text = 3;
+}
+
+message ParsedText {
+    SemanticText semantics = 1;
+}
+
+message SemanticText {
+    repeated SemanticTerm terms = 1;
+}
+
+message SemanticTerm {
+    // The text
+    string text = 1;
+    // The text tags
+    repeated string tags = 2;
+}
+
 enum MedicalActionType {
     // No action
     MedicalActionTypeNone = 0;
