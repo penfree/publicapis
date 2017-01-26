@@ -39,6 +39,8 @@ enum UserAnalyzeTarget {
     UserAnalyzeTargetRecommendedDrugs = 6;
     // {LANG: en} The best action for current input
     UserAnalyzeTargetBestAction = 7;
+    // Analyze parse text
+    UserAnalyzeTargetParseText = 8;
 }
 
 // {LANG: en} The options of more symptoms
@@ -112,6 +114,9 @@ message BestActionOptions {
     int32 size = 1;
 }
 
+message ParseTextOptions {
+}
+
 // {LANG: en} The request of user analyze
 // {LANG: cn} 用户分析请求
 message UserAnalyzeRequest {
@@ -138,6 +143,8 @@ message UserAnalyzeRequest {
     // {LANG: en} The user exam items
     // {LANG: cn} 用户检查项目列表
     repeated UserExamObservation examObservations = 8;
+    // 原始文本
+    repeated Text texts = 9;
 }
 
 // {LANG: en} The options of user analyze
@@ -163,6 +170,8 @@ message UserAnalyzeOptions {
     RecommendedDrugsOptions recommendedDrugs = 10;
     // The best action options
     BestActionOptions bestActions = 11;
+    // Parse text
+    ParseTextOptions parseText = 12;
 }
 
 // {LANG: en} The analyze response of more symptoms
@@ -404,6 +413,10 @@ message BestAction {
     float weight = 2;
 }
 
+message ParseTextResponse {
+    repeated ParsedText texts = 1;
+}
+
 // {LANG: en} The response of user analyze
 // {LANG: cn} 用户分析结果
 message UserAnalyzeResponse {
@@ -427,5 +440,6 @@ message UserAnalyzeResponse {
     RecommendedDrugsAnalyzeResponse recommendedDrugs = 10;
     // The best action response
     BestActionResponse bestActions = 11;
-
+    // Text parse response
+    ParseTextResponse parseTexts = 12;
 }
