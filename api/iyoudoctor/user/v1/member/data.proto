@@ -24,4 +24,5 @@ message Member {
     string gender = 4;
     // Birthday, use RFC 3339 format to serialize to string (e.g. 1972-01-01T10:00:20.021Z)
     google.protobuf.Timestamp birthday = 5;
+    
 }

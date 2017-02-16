@@ -192,7 +192,7 @@ message ExamItem {
     string friendlyName = 2;
     // {LANG: en} The category
     // {LANG: cn} 分类
-    string category = 3;
+    repeated string category = 3;
 }
 
 // {LANG: en} The exam item observation
@@ -296,3 +296,5 @@ message WikiSection {
     // The value
     string value = 2;
 }
+
+

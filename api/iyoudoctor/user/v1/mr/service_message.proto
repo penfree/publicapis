@@ -26,6 +26,8 @@ message GetMedicalRecordResponse {
 message GetMedicalRecordsByMemberRequest {
     // The member id
     string id = 1;
+    // The medical type
+    string medicalType = 2;
     // The start
     int32 start = 14;
     // The size
@@ -48,6 +50,9 @@ message CreateMedicalRecordRequest {
     MedicalRecord record = 1;
     // The member id
     string memberID = 2;
+
+    // The medical type
+    //string medicalType = 3;
 }
 
 message CreateMedicalRecordResponse {

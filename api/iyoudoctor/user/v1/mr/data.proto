@@ -22,6 +22,11 @@ message MedicalRecord {
     MedicalRecordUser user = 3;
     // The content
     MedicalRecordContent content = 4;
+
+    // The medical type XBCY:小病吃药，DBWZ：大病问诊
+    string medicalType = 5;
+    // 大病问诊记录内容
+    InterrogationRecord interrogationRecord = 6;
 }
 
 // The medical record user info
@@ -43,3 +48,87 @@ message MedicalRecordContent {
     // The user choose
     bool userChoose = 4;
 }
+
+message InterrogationRecord {
+    // The medical input description
+    MedicalInputContent inputContent = 1;
+    // The medical guide content
+    MedicalGuideContent guideContent = 2;
+}
+
+// The medical input record content
+message MedicalInputContent {
+    // vital
+    Vital vital = 1;
+    // The symptoms
+    repeated string symptoms = 2;
+    // Lab items
+    repeated LabItem labItems = 3;
+    // exam items
+    repeated ExamItem examItems = 4;
+}
+
+// The medical input record content
+message MedicalGuideContent {
+    // disease items
+    repeated DiseaseItem diseaseItems = 1;
+    // the required lab items
+    repeated LabItem requiredLabItems = 2;
+    // the required exam items
+    repeated ExamItem requiredExamItems = 3;
+    // The surgeries
+    repeated string surgeries = 4;
+    // The drugs
+    repeated string drugs = 5;
+}
+
+
+// The body vital 
+message Vital {
+    // the height
+    int32 height = 1;
+    // the weight
+    double weight = 2;
+    // the pulse
+    int32 pulse = 3;
+    // the temperature
+    double temperature = 4;
+    // the diastolic blood pressure
+    int32 diastolicPressure = 5;  
+    // the systolic blood pressure
+    int32 systolicPressure = 6;
+}
+
+// The medical lab item
+message LabItem{
+    // the name
+    string name = 1;
+    // the item name
+    string itemName = 2;
+    // the specimen
+    string specimen = 3;
+    // the labitem result
+    string result = 4;
+    // the category(按化验套餐分类)
+    string category = 5;
+    // the weight
+    double weight = 14;
+}
+
+// The medical exam item
+message ExamItem{
+    // the name
+    string name = 1;
+    // the exam result
+    string result = 2;
+}
+
+// The disease item
+message DiseaseItem{
+    // the name
+    string name = 1;
+    // the disease probability
+    double weight = 2;
+}
+
+
