@@ -1,0 +1,43 @@
+// Copyright 2016 北京大数医达科技有限公司
+//
+
+syntax = "proto3";
+
+// This package implements the identity & access management related interfaces
+package iyoudoctor.monitor.v1;
+
+option go_package = "monitorv1";
+
+option java_multiple_files = true;
+option java_outer_classname = "DataProto";
+option java_package = "com.iyoudoctor.monitor.v1";
+
+// Result of service function
+message ServiceResult {
+    // Return code
+    string code = 1;
+    // Return message
+    string text = 2;
+}
+
+// metric
+message MetricItem {
+    string name = 1;
+    string value = 2;
+    int32 time = 3;
+    string flag = 4;
+}
+
+// host info
+message HostInfo {
+    string hostname = 1;
+    string ip = 2;
+}
+
+// cluster info
+message ClusterInfo {
+    string name = 1;
+    repeated HostInfo hosts = 2;
+}
+
+
