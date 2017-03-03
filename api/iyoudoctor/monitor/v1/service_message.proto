@@ -36,9 +36,10 @@ message GetHostMetricRequest{
         string hostname = 1;
         string ip = 2;
     }
-    int32 startTime = 3;
-    int32 endTime = 4;
-    int32 interval = 5;
+    string name = 3;
+    int32 startTime = 4;
+    int32 endTime = 5;
+    int32 interval = 6;
 }
 
 message GetHostMetricResponse{
